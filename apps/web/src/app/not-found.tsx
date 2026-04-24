@@ -1,0 +1,22 @@
+import Image from "next/image";
+
+export default function NotFound() {
+  return (
+    <main className="section-shell flex min-h-screen items-center py-24">
+      <div className="grid w-full items-center gap-10 lg:grid-cols-2">
+        <div>
+          <span className="eyebrow">404</span>
+          <h1 className="font-fredoka text-6xl font-semibold text-white md:text-8xl">Lost in the neon.</h1>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-white/68">The page you requested does not exist, but the portfolio is still glowing nearby.</p>
+          <a href="/" className="neon-button mt-8">
+            <i className="fa-solid fa-arrow-left" />
+            Back Home
+          </a>
+        </div>
+        <div className="glass-card relative mx-auto aspect-[0.86] w-full max-w-sm p-8">
+          <Image src="/images/character-placeholder.svg" alt="404 character placeholder" fill className="object-contain p-8" />
+        </div>
+      </div>
+    </main>
+  );
+}

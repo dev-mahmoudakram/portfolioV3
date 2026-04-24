@@ -1,0 +1,14 @@
+@mixin glass-panel {
+  border: 1px solid var(--glass-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.035)),
+    rgba(12, 5, 32, 0.72);
+  box-shadow: 0 24px 80px rgba(38, 7, 220, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+@mixin neon-ring {
+  box-shadow:
+    0 0 18px rgba(113, 72, 212, 0.45),
+    0 0 54px rgba(38, 7, 220, 0.28);
+}
