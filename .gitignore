@@ -11,7 +11,7 @@ dist
 /build
 coverage
 deploy-output
-apps/web/src/generated
+src/generated
 
 # environment
 .env
