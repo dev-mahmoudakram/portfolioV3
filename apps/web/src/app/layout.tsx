@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/styles/globals.scss";
 import { Navbar } from "@/components/Navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
         <Navbar />
+        {process.env.NODE_ENV === "production" && <SpeedInsights />}
       </body>
     </html>
   );
