@@ -296,6 +296,29 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .content {
+    padding-left: 4.5rem;
+  }
+
+  .socialRail {
+    left: 1rem;
+    gap: 0.8rem;
+    transform: translateY(-42%);
+  }
+
+  .socialRail::after {
+    height: 6.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .socialLink {
+    width: 2.55rem;
+    height: 2.55rem;
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 1279px) {
   .socialRail {
     left: 1.1rem;

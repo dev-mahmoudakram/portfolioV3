@@ -4,9 +4,7 @@ const nextConfig = {
   output: "standalone",
   distDir: process.env.NEXT_DIST_DIR ?? ".next",
   transpilePackages: ["@mahmoud-portfolio/types"],
-  experimental: {
-    serverComponentsExternalPackages: ["@prisma/client", "prisma"]
-  },
+  serverExternalPackages: ["@prisma/client", "prisma"],
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"]
   },

@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "prisma:generate": "prisma generate --schema prisma/schema.prisma",
-    "prisma:migrate:deploy": "prisma migrate deploy --schema prisma/schema.prisma"
+    "prisma:migrate:dev": "prisma migrate dev --schema prisma/schema.prisma",
+    "prisma:migrate:deploy": "prisma migrate deploy --schema prisma/schema.prisma",
+    "prisma:seed": "node prisma/seed.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",

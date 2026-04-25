@@ -8,22 +8,19 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm-run-all --parallel dev:web dev:api",
+    "dev": "npm run dev:web",
     "dev:web": "npm --workspaces=false --prefix apps/web run dev",
-    "dev:api": "npm --workspaces=false --prefix apps/api run start:dev",
     "build:types": "npm --workspaces=false --prefix packages/types run build",
     "build:web": "npm --workspaces=false --prefix apps/web run build",
-    "build:api": "npm --workspaces=false --prefix apps/api run build",
-    "build": "npm --workspaces=false --prefix packages/types run build && npm --workspaces=false --prefix apps/api run build && npm --workspaces=false --prefix apps/web run build",
-    "deploy:plesk:web": "node scripts/prepare-plesk-web.mjs",
-    "deploy:plesk": "npm run deploy:plesk:web",
-    "lint": "npm --workspaces=false --prefix apps/web run lint && npm --workspaces=false --prefix apps/api run lint",
+    "build": "npm --workspaces=false --prefix packages/types run build && npm --workspaces=false --prefix apps/web run build",
+    "lint": "npm --workspaces=false --prefix apps/web run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md,scss,css,prisma}\"",
-    "prisma:migrate": "npm --workspaces=false --prefix apps/api run prisma:migrate",
-    "prisma:seed": "npm --workspaces=false --prefix apps/api run prisma:seed"
+    "prisma:generate": "npm --workspaces=false --prefix apps/web run prisma:generate",
+    "prisma:migrate": "npm --workspaces=false --prefix apps/web run prisma:migrate:dev",
+    "prisma:migrate:deploy": "npm --workspaces=false --prefix apps/web run prisma:migrate:deploy",
+    "prisma:seed": "npm --workspaces=false --prefix apps/web run prisma:seed"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5"
   }
 }

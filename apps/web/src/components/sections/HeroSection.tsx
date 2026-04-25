@@ -39,7 +39,7 @@ export function HeroSection() {
       <SocialRail />
 
       <div className={`section-shell ${styles.content}`}>
-        <div className="grid min-h-[100svh] items-center gap-10 pb-12 pt-8 sm:pt-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-6 lg:pb-24 lg:pt-32">
+        <div className="grid min-h-[100svh] items-center gap-10 pb-12 pt-8 sm:pt-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-6 lg:pb-20 lg:pt-16 xl:pb-24 xl:pt-20">
           <div className="max-w-2xl">
             <motion.p
               className="font-poppins text-2xl font-medium leading-tight text-white/86 md:text-[2rem]"

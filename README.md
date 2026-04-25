@@ -1,12 +1,14 @@
 # Mahmoud Akram Portfolio
 
-Premium purple neon portfolio monorepo for Mahmoud Akram, built with Next.js App Router, NestJS, Prisma, MySQL, Tailwind CSS, SCSS, GSAP, and Font Awesome.
+Premium purple neon portfolio built as a single Next.js App Router application with Prisma and Supabase Postgres.
 
 ## Stack
 
-- `apps/web`: Next.js App Router, TypeScript, Tailwind CSS, SCSS, GSAP, Font Awesome, SEO metadata
-- `apps/api`: NestJS, TypeScript, Prisma ORM, MySQL
+- `apps/web`: Next.js App Router, TypeScript, Tailwind CSS, SCSS, Framer Motion, GSAP, Font Awesome
 - `packages/types`: shared TypeScript contracts
+- Prisma ORM with Supabase PostgreSQL
+
+The repository still contains `apps/api` from the earlier NestJS version, but the live portfolio now runs through `apps/web` only.
 
 ## Local Setup
 
@@ -16,113 +18,93 @@ Premium purple neon portfolio monorepo for Mahmoud Akram, built with Next.js App
 npm install
 ```
 
-2. Create the MySQL database in XAMPP phpMyAdmin or MySQL CLI:
-
-```sql
-CREATE DATABASE mahmoud_portfolio;
-```
-
-3. Create environment files:
+2. Create environment files:
 
 ```bash
 cp .env.example .env
-cp apps/api/.env.example apps/api/.env
 cp apps/web/.env.example apps/web/.env.local
 ```
 
-NestJS database URL:
+3. Set your Supabase environment variables in `apps/web/.env.local`:
 
 ```env
-DATABASE_URL="mysql://root:@localhost:3306/mahmoud_portfolio"
-PORT=4000
-WEB_ORIGIN="http://localhost:3000"
-```
-
-Next.js environment:
-
-```env
-DATABASE_URL="mysql://root:@localhost:3306/mahmoud_portfolio"
+DATABASE_URL="postgresql://postgres.<project-ref>:[YOUR-PASSWORD]@aws-0-eu-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.<project-ref>:[YOUR-PASSWORD]@aws-0-eu-west-1.pooler.supabase.com:5432/postgres"
 NEXT_PUBLIC_API_URL="/api"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
 
-4. Generate Prisma client and run migrations:
+Use the pooled connection for `DATABASE_URL` and the direct connection for `DIRECT_URL`.
+
+4. Generate the Prisma client and apply the web app migration:
 
 ```bash
+npm run prisma:generate
 npm run prisma:migrate
 ```
 
-5. Seed sample projects and skills:
+5. Seed starter projects and skills:
 
 ```bash
 npm run prisma:seed
 ```
 
-6. Run both apps:
+6. Start the Next app:
 
 ```bash
 npm run dev
 ```
 
-Frontend: `http://localhost:3000`
+App URL: `http://localhost:3000`
 
-API: `http://localhost:4000`
+## App Routes
 
-## API Endpoints
+Public pages are handled by the App Router in `apps/web/src/app`.
 
-- `GET /projects`
-- `GET /projects/featured`
-- `GET /projects/:slug`
-- `POST /contact`
-- `GET /skills`
-- `GET /admin/health`
+App Router API routes:
+
+- `GET /api/projects`
+- `GET /api/projects/featured`
+- `GET /api/projects/[slug]`
+- `POST /api/contact`
+- `GET /api/skills`
+- `GET /health`
+
+## Vercel Deployment
+
+This project is intended to deploy as a single app on Vercel.
+
+### Recommended Vercel settings
+
+- Framework Preset: `Next.js`
+- Root Directory: `apps/web`
+- Build Command: `npm run build`
+- Install Command: `npm install`
+
+### Required Vercel Environment Variables
+
+```env
+DATABASE_URL="postgresql://postgres.<project-ref>:[YOUR-PASSWORD]@aws-0-eu-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.<project-ref>:[YOUR-PASSWORD]@aws-0-eu-west-1.pooler.supabase.com:5432/postgres"
+NEXT_PUBLIC_API_URL="/api"
+NEXT_PUBLIC_SITE_URL="https://your-vercel-domain.vercel.app"
+```
+
+After the first deploy, run the migration against Supabase:
+
+```bash
+npm run prisma:migrate:deploy
+```
+
+Then seed data once:
+
+```bash
+npm run prisma:seed
+```
 
 ## Notes
 
-- XAMPP MySQL defaults are assumed: host `localhost`, port `3306`, username `root`, empty password.
-- The contact endpoint currently saves messages to MySQL and includes a clean placeholder location for adding email sending later.
-- Project and character images are placeholders in `apps/web/public/images`; replace them with final brand visuals when ready.
-
-## Plesk Deployment
-
-Because the public API now runs through Next.js route handlers, you can deploy the portfolio as a single Node.js app on one Plesk domain.
-
-Generate the upload-ready bundle locally:
-
-```bash
-npm run deploy:plesk:web
-```
-
-Generated folder:
-
-- `deploy-output/plesk/web`
-
-### Plesk Setup
-
-Upload the contents of `deploy-output/plesk/web` to the frontend domain application root.
-
-Use these Plesk values:
-
-- Application Root: folder containing uploaded frontend bundle
-- Document Root: `public` for root standalone builds, or `apps/web/public` if the bundle contains `apps/web/server.js`
-- Application Startup File: `app.js`
-
-Set frontend environment variables in Plesk:
-
-```env
-NODE_ENV=production
-DATABASE_URL=mysql://DB_USER:DB_PASS@localhost:3306/mahmoud_portfolio
-NEXT_PUBLIC_SITE_URL=https://mahmoud-akram.duckdns.org
-NEXT_PUBLIC_API_URL=/api
-PORT=3000
-HOSTNAME=0.0.0.0
-```
-
-Then:
-
-1. `NPM install`
-2. `Run script` -> `prisma:generate`
-3. `Run script` -> `prisma:migrate:deploy`
-4. `Restart App`
-
-The separate NestJS app remains in the repository for local development and future multi-app deployments, but it is not required for the single-domain Plesk deployment.
+- Prisma schema and migrations for the live app live in `apps/web/prisma`
+- Server-side data access lives in `apps/web/src/server/portfolio-data.ts`
+- Prisma client setup lives in `apps/web/src/lib/prisma.ts`
+- If you do not want the old NestJS app anymore, you can remove `apps/api` later without affecting the live web app
