@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   transpilePackages: ["@mahmoud-portfolio/types"],
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"]

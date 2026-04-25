@@ -1,10 +1,7 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface SectionRevealProps {
   children: ReactNode;
@@ -12,32 +9,15 @@ interface SectionRevealProps {
 }
 
 export function SectionReveal({ children, className = "" }: SectionRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const tween = gsap.to(element, {
-      opacity: 1,
-      y: 0,
-      duration: 0.9,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: element,
-        start: "top 82%"
-      }
-    });
-
-    return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
-    };
-  }, []);
-
   return (
-    <div ref={ref} className={`reveal-section ${className}`}>
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ duration: 0.75 }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }

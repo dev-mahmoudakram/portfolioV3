@@ -2,10 +2,15 @@ import type { Project, Skill } from "@mahmoud-portfolio/types";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { BackToTop } from "@/components/BackToTop";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
+import { getProjects } from "@/services/projects.service";
+import { getSkills } from "@/services/skills.service";
+
+export const revalidate = 300;
 
 const fallbackProjects: Project[] = [
   {
@@ -60,7 +65,11 @@ const fallbackSkills: Skill[] = [
   }))
 ].flat();
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [projectsResult, skillsResult] = await Promise.allSettled([getProjects(), getSkills()]);
+  const projects = projectsResult.status === "fulfilled" ? projectsResult.value : fallbackProjects;
+  const skills = skillsResult.status === "fulfilled" ? skillsResult.value : fallbackSkills;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -75,11 +84,12 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeroSection />
       <AboutSection />
-      <SkillsSection initialSkills={fallbackSkills} />
-      <ProjectsSection initialProjects={fallbackProjects} />
+      <SkillsSection skills={skills} />
+      <ProjectsSection initialProjects={projects} />
       <ServicesSection />
       <ExperienceSection />
       <ContactSection />
+      <BackToTop />
     </main>
   );
 }

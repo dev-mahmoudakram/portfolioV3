@@ -9,13 +9,17 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 html {
-  scroll-behavior: smooth;
   background: var(--color-black);
 }
 
 body {
-  min-height: 100vh;
   overflow-x: hidden;
   color: var(--color-white);
   background:
@@ -78,7 +82,49 @@ a {
   color: transparent;
 }
 
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 96px;
+}
+
+@media (max-width: 1023px) {
+  .snap-section {
+    padding-top: 120px;
+  }
+}
+
 .reveal-section {
   opacity: 0;
   transform: translateY(36px);
+}
+
+.navbar-hidden {
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
+.gsap-hidden {
+  opacity: 0;
+}
+
+.gsap-hidden-up {
+  opacity: 0;
+  transform: translateY(44px);
+}
+
+.gsap-hidden-right {
+  opacity: 0;
+  transform: translateX(56px);
 }

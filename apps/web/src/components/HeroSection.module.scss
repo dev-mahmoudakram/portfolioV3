@@ -1,0 +1,359 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(113, 72, 212, 0.24), transparent 24rem),
+    radial-gradient(circle at 82% 22%, rgba(38, 7, 220, 0.2), transparent 30rem),
+    linear-gradient(180deg, #04010d 0%, #000000 45%, #060113 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(6, 2, 18, 0.86) 34%, rgba(6, 2, 18, 0.28) 67%, rgba(0, 0, 0, 0.82) 100%);
+  z-index: 0;
+}
+
+.waveLayer {
+  position: absolute;
+  inset: 22% -6% 14% -6%;
+  z-index: 0;
+  opacity: 0.42;
+  filter: blur(12px) saturate(1.16) brightness(0.92);
+  pointer-events: none;
+}
+
+.waveImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: screen;
+  transform: scale(1.34);
+}
+
+.waveLayerSecondary {
+  position: absolute;
+  inset: 28% 8% 20% 8%;
+  z-index: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at center, rgba(196, 148, 255, 0.24), transparent 30%),
+    linear-gradient(90deg, rgba(92, 48, 241, 0), rgba(144, 95, 255, 0.24), rgba(92, 48, 241, 0));
+  filter: blur(44px);
+  pointer-events: none;
+}
+
+.waveGlow {
+  position: absolute;
+  inset: auto 20% 18% 24%;
+  height: 15rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(113, 72, 212, 0.46), transparent 62%);
+  filter: blur(58px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.gradientName {
+  background: linear-gradient(90deg, #ffffff 0%, #c68cff 24%, #7148d4 58%, #2607dc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.titleGradient {
+  background: linear-gradient(90deg, #6030f0 0%, #9b6dff 40%, #e0ccff 75%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.description {
+  overflow-wrap: break-word;
+}
+
+.buttonPrimary {
+  position: relative;
+  border: 1px solid rgba(166, 114, 255, 0.45);
+  background: linear-gradient(135deg, #7a3cff 0%, #4f1ff1 56%, #2607dc 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 26px rgba(113, 72, 212, 0.38),
+    0 18px 42px rgba(38, 7, 220, 0.34);
+}
+
+.buttonPrimary::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 58%);
+  pointer-events: none;
+}
+
+.buttonSecondary {
+  border: 1px solid rgba(160, 122, 255, 0.34);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 18px 36px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.visualWrap {
+  position: relative;
+  isolation: isolate;
+}
+
+.characterShell {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 40rem;
+}
+
+.characterGlow {
+  position: absolute;
+  inset: 16% 8% 8% 12%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at center, rgba(113, 72, 212, 0.42), rgba(38, 7, 220, 0.18) 46%, transparent 72%);
+  filter: blur(22px);
+  z-index: 0;
+}
+
+.character {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 36rem);
+  height: auto;
+  filter: drop-shadow(0 0 28px rgba(87, 46, 220, 0.55)) drop-shadow(0 18px 40px rgba(0, 0, 0, 0.38));
+}
+
+.bubbleAnchor {
+  position: absolute;
+  top: 6%;
+  right: -0.5rem;
+  z-index: 3;
+}
+
+.bubble {
+  position: relative;
+}
+
+.bubbleInner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 9.25rem;
+  min-height: 5.9rem;
+  padding: 0.75rem 1.8rem 0.95rem;
+  border: 3px solid rgba(179, 131, 255, 0.98);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2), transparent 34%),
+    linear-gradient(180deg, rgba(97, 45, 226, 0.98) 0%, rgba(50, 18, 122, 0.96) 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 40px rgba(113, 72, 212, 0.32),
+    0 12px 32px rgba(19, 7, 49, 0.4);
+  color: #ffffff;
+}
+
+.bubbleInner::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  bottom: -0.9rem;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-right: 3px solid rgba(179, 131, 255, 0.98);
+  border-bottom: 3px solid rgba(179, 131, 255, 0.98);
+  background: linear-gradient(180deg, rgba(91, 40, 219, 0.98) 0%, rgba(50, 18, 122, 0.96) 100%);
+  transform: skewX(-14deg) rotate(34deg);
+}
+
+.bubbleSpark {
+  position: absolute;
+  width: 0.95rem;
+  height: 0.24rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+.bubbleSparkOne {
+  top: -0.3rem;
+  right: 1rem;
+  transform: rotate(14deg);
+}
+
+.bubbleSparkTwo {
+  top: 0.35rem;
+  right: -0.75rem;
+  transform: rotate(58deg);
+}
+
+.bubbleSparkThree {
+  top: 1.45rem;
+  right: -0.7rem;
+  transform: rotate(82deg);
+}
+
+.socialRail {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transform: translateY(-40%);
+}
+
+.socialRail::after {
+  content: "";
+  width: 1px;
+  height: 9rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(180deg, rgba(113, 72, 212, 0.72), rgba(113, 72, 212, 0));
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 18px rgba(113, 72, 212, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  border-color: rgba(161, 109, 255, 0.72);
+  box-shadow: 0 0 24px rgba(113, 72, 212, 0.28);
+  color: #ffffff;
+}
+
+.scrollDock {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 1.85rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.scrollButton {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.scrollCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.6rem;
+  height: 4.6rem;
+  border: 1px solid rgba(157, 103, 255, 0.76);
+  border-radius: 999px;
+  background: rgba(12, 4, 30, 0.54);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 30px rgba(113, 72, 212, 0.22);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.scrollLabel {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1279px) {
+  .socialRail {
+    left: 1.1rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .socialRail {
+    display: none;
+  }
+
+  .characterShell {
+    min-height: 22rem;
+  }
+
+  .bubbleAnchor {
+    top: 0.5rem;
+    right: 0.2rem;
+  }
+
+  .waveLayer {
+    inset: 26% -18% 14% -18%;
+    opacity: 0.38;
+  }
+}
+
+@media (max-width: 767px) {
+  .waveLayer {
+    inset: 28% -34% 20% -34%;
+    opacity: 0.34;
+  }
+
+  .characterShell {
+    min-height: 0;
+  }
+
+  .scrollDock {
+    display: none;
+  }
+
+  .character {
+    width: min(100%, 18rem);
+  }
+
+  .bubbleAnchor {
+    top: 0.25rem;
+    right: 0.1rem;
+  }
+
+  .bubbleInner {
+    min-width: 6.9rem;
+    min-height: 4.8rem;
+    padding: 0.55rem 1.1rem 0.8rem;
+  }
+
+  .scrollDock {
+    position: static;
+    margin-top: 1.75rem;
+    padding-bottom: 1.5rem;
+  }
+}
