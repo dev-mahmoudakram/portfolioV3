@@ -38,10 +38,11 @@ PORT=4000
 WEB_ORIGIN="http://localhost:3000"
 ```
 
-Next.js API URL:
+Next.js environment:
 
 ```env
-NEXT_PUBLIC_API_URL="http://localhost:4000"
+DATABASE_URL="mysql://root:@localhost:3306/mahmoud_portfolio"
+NEXT_PUBLIC_API_URL="/api"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
 
@@ -81,3 +82,47 @@ API: `http://localhost:4000`
 - XAMPP MySQL defaults are assumed: host `localhost`, port `3306`, username `root`, empty password.
 - The contact endpoint currently saves messages to MySQL and includes a clean placeholder location for adding email sending later.
 - Project and character images are placeholders in `apps/web/public/images`; replace them with final brand visuals when ready.
+
+## Plesk Deployment
+
+Because the public API now runs through Next.js route handlers, you can deploy the portfolio as a single Node.js app on one Plesk domain.
+
+Generate the upload-ready bundle locally:
+
+```bash
+npm run deploy:plesk:web
+```
+
+Generated folder:
+
+- `deploy-output/plesk/web`
+
+### Plesk Setup
+
+Upload the contents of `deploy-output/plesk/web` to the frontend domain application root.
+
+Use these Plesk values:
+
+- Application Root: folder containing uploaded frontend bundle
+- Document Root: `public` for root standalone builds, or `apps/web/public` if the bundle contains `apps/web/server.js`
+- Application Startup File: `app.js`
+
+Set frontend environment variables in Plesk:
+
+```env
+NODE_ENV=production
+DATABASE_URL=mysql://DB_USER:DB_PASS@localhost:3306/mahmoud_portfolio
+NEXT_PUBLIC_SITE_URL=https://mahmoud-akram.duckdns.org
+NEXT_PUBLIC_API_URL=/api
+PORT=3000
+HOSTNAME=0.0.0.0
+```
+
+Then:
+
+1. `NPM install`
+2. `Run script` -> `prisma:generate`
+3. `Run script` -> `prisma:migrate:deploy`
+4. `Restart App`
+
+The separate NestJS app remains in the repository for local development and future multi-app deployments, but it is not required for the single-domain Plesk deployment.

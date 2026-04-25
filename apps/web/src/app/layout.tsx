@@ -24,11 +24,6 @@ export const metadata: Metadata = {
     apple: [{ url: "/images/favicon/apple-icon.png", sizes: "180x180", type: "image/png" }],
     shortcut: ["/images/favicon/favicon.ico"]
   },
-  appleWebApp: {
-    capable: true,
-    title: "dev-Akram",
-    statusBarStyle: "black-translucent"
-  },
   openGraph: {
     title: "Mahmoud Akram | Web Developer",
     description: "Built for Speed. Designed to Impress.",
@@ -46,10 +41,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <link
           href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"

@@ -5,10 +5,13 @@ node_modules
 
 # builds and generated output
 .next
+.next-plesk*
 dist
 /out
 /build
 coverage
+deploy-output
+apps/web/src/generated
 
 # environment
 .env

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -8,10 +9,10 @@ export default function NotFound() {
           <span className="eyebrow">404</span>
           <h1 className="font-fredoka text-6xl font-semibold text-white md:text-8xl">Lost in the neon.</h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/68">The page you requested does not exist, but the portfolio is still glowing nearby.</p>
-          <a href="/" className="neon-button mt-8">
+          <Link href="/" className="neon-button mt-8">
             <i className="fa-solid fa-arrow-left" />
             Back Home
-          </a>
+          </Link>
         </div>
         <div className="glass-card relative mx-auto aspect-[0.86] w-full max-w-sm p-8">
           <Image src="/images/character-placeholder.svg" alt="404 character placeholder" fill className="object-contain p-8" />
