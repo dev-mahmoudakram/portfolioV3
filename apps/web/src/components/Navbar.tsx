@@ -81,7 +81,7 @@ export function Navbar() {
           aria-label="Scroll to top"
         >
           <Image
-            src="/images/akram%20logo/logo-08.png"
+            src="/images/akram%20logo/logo-11.png"
             alt="Mahmoud Akram logo"
             width={291}
             height={93}

@@ -28,7 +28,7 @@ export function BackToTop() {
           type="button"
           aria-label="Back to top"
           onClick={() => scrollToSection("home", 0)}
-          className="fixed bottom-8 right-8 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-purple-500/40 bg-[#04010d]/80 text-white shadow-[0_0_24px_rgba(113,72,212,0.35)] backdrop-blur-xl hover:border-purple-400/60 hover:shadow-[0_0_32px_rgba(113,72,212,0.55)]"
+          className="fixed bottom-8 right-8 z-50 hidden h-12 w-12 items-center justify-center rounded-full border border-purple-500/40 bg-[#04010d]/80 text-white shadow-[0_0_24px_rgba(113,72,212,0.35)] backdrop-blur-xl hover:border-purple-400/60 hover:shadow-[0_0_32px_rgba(113,72,212,0.55)] md:inline-flex"
           initial={{ scale: 0.6, opacity: 0 }}
           animate={{ scale: 1,   opacity: 1 }}
           exit={{    scale: 0.6, opacity: 0 }}
