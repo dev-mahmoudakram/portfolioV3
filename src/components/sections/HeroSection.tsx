@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import styles from "@/components/HeroSection.module.scss";
 import { ScrollDownButton } from "@/components/ScrollDownButton";
@@ -17,6 +17,43 @@ const fadeUp = (delay: number) => ({
 export function HeroSection() {
   const rootRef = useRef<HTMLElement>(null);
 
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+
+    let touchStartY = 0;
+    let locked = false;
+
+    const goToNext = () => {
+      if (locked) return;
+      locked = true;
+      scrollToSection("about");
+      setTimeout(() => { locked = false; }, 1000);
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY > 0) goToNext();
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (touchStartY - e.changedTouches[0].clientY > 40) goToNext();
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: true });
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
   return (
     <section id="home" ref={rootRef} className={styles.hero}>
       <motion.div
@@ -24,15 +61,16 @@ export function HeroSection() {
         animate={{ scale: 1.05, x: "1.4%" }}
         transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
       >
-        <Image
-          src="/images/akram%20logo/animated-wave.gif"
-          alt=""
-          fill
-          priority
-          unoptimized
-          sizes="100vw"
-          className={styles.waveImage}
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={styles.waveVideo}
+        >
+          <source src="/images/akram logo/animated-wave.webm" type="video/webm" />
+          <source src="/images/akram logo/animated-wave.mp4" type="video/mp4" />
+        </video>
       </motion.div>
       <div className={styles.waveLayerSecondary} />
       <div className={styles.waveGlow} />

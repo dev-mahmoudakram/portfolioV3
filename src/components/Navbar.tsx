@@ -36,10 +36,19 @@ export function Navbar() {
     if (hero) {
       const heroObserver = new IntersectionObserver(
         ([entry]) => setHeroVisible(entry.isIntersecting),
-        { root: container as Element, threshold: 0.1 }
+        { root: container as Element, threshold: 0.15 }
       );
       heroObserver.observe(hero);
     }
+
+    const scrollEl = (container as HTMLElement) ?? window;
+    const onScroll = () => {
+      const heroEl = document.getElementById("home");
+      if (!heroEl) return;
+      setHeroVisible(heroEl.getBoundingClientRect().bottom > window.innerHeight * 0.15);
+    };
+    (scrollEl as HTMLElement).addEventListener?.("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     const observers: IntersectionObserver[] = [];
     sectionIds.forEach((id) => {
@@ -120,7 +129,7 @@ export function Navbar() {
         <button
           type="button"
           aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={String(menuOpen) as "true" | "false"}
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/35 text-white backdrop-blur-xl lg:hidden"
         >

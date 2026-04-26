@@ -4,15 +4,15 @@
   padding-bottom: 2rem;
 }
 
-.aboutSection::before {
-  content: "";
-  position: absolute;
-  inset: 10% 0 0;
-  background:
-    radial-gradient(circle at 16% 24%, rgba(113, 72, 212, 0.12), transparent 28rem),
-    radial-gradient(circle at 76% 36%, rgba(38, 7, 220, 0.12), transparent 24rem);
-  pointer-events: none;
-}
+// .aboutSection::before {
+//   content: "";
+//   position: absolute;
+//   inset: 10% 0 0;
+//   background:
+//     radial-gradient(circle at 16% 24%, rgba(113, 72, 212, 0.12), transparent 28rem),
+//     radial-gradient(circle at 76% 36%, rgba(38, 7, 220, 0.12), transparent 24rem);
+//   pointer-events: none;
+// }
 
 .sectionGlowTop {
   position: absolute;

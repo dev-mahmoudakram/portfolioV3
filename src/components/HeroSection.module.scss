@@ -2,7 +2,6 @@
   position: relative;
   min-height: 100svh;
   overflow: hidden;
-  scroll-snap-align: start;
   background:
     radial-gradient(circle at 18% 18%, rgba(113, 72, 212, 0.24), transparent 24rem),
     radial-gradient(circle at 82% 22%, rgba(38, 7, 220, 0.2), transparent 30rem),
@@ -32,6 +31,16 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
+  mix-blend-mode: screen;
+  transform: scale(1.34);
+}
+
+.waveVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   mix-blend-mode: screen;
   transform: scale(1.34);
 }
