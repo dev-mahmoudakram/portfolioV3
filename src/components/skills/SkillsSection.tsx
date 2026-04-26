@@ -155,9 +155,8 @@ export function SkillsSection(_: SkillsSectionProps) {
             My<span className={`inline-block ${styles.gradientText}`}>Skills</span>
           </h2>
           <div className={styles.titleBar} />
-          <div className={styles.skillsCharacterWrap}>
+          <div className={`${styles.skillsCharacterWrap} hidden xl:block`}>
             <div className={styles.skillsCharacterGlow} />
-            {/* <div className={styles.skillsCharacterOrbit} /> */}
             <motion.div
               className={styles.skillsCharacter}
               animate={{ y: [0, -10, 0] }}
@@ -177,6 +176,24 @@ export function SkillsSection(_: SkillsSectionProps) {
 
         <div className={styles.panelWrap}>
           <SkillTabs items={categories} activeId={activeId} onSelect={(id) => setActiveId(id as CategoryId)} />
+
+          <div className={`${styles.skillsCharacterWrap} xl:hidden`}>
+            <div className={styles.skillsCharacterGlow} />
+            <motion.div
+              className={styles.skillsCharacter}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src="/images/char/skills.png"
+                alt="Mahmoud Akram character portrait for the skills section"
+                width={520}
+                height={620}
+                className={styles.skillsCharacterImage}
+                priority={false}
+              />
+            </motion.div>
+          </div>
 
           <div className={styles.panel} id={`skills-panel-${activeCategory.id}`} role="tabpanel" aria-labelledby={`skills-tab-${activeCategory.id}`}>
             <AnimatePresence mode="wait">

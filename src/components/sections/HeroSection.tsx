@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import styles from "@/components/HeroSection.module.scss";
 import { ScrollDownButton } from "@/components/ScrollDownButton";
-import { SocialRail } from "@/components/SocialRail";
+import { SocialRail, socialLinks } from "@/components/SocialRail";
 import { scrollToSection } from "@/lib/scrollToSection";
 
 const fadeUp = (delay: number) => ({
@@ -131,6 +131,21 @@ export function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
           >
+            <div className="mb-5 flex items-center justify-center gap-3 lg:hidden">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  aria-label={item.label}
+                  className={styles.socialLink}
+                >
+                  <i className={item.icon} />
+                </a>
+              ))}
+            </div>
+
             <motion.div
               className={styles.characterShell}
               animate={{ y: [0, -10, 0] }}

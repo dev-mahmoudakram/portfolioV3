@@ -20,13 +20,15 @@ export function AboutSection() {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
-          {/* On mobile: character first (order-first), text+cards second */}
-          <div className="order-2 relative z-[1] lg:order-1">
+          <div className="order-1 relative z-[1] lg:order-1">
             <AboutText />
+            <div className="lg:hidden">
+              <AboutCharacter />
+            </div>
             <AboutCards />
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="hidden lg:block lg:order-2">
             <AboutCharacter />
           </div>
         </motion.div>
