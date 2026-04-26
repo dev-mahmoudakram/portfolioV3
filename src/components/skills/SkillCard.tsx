@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import styles from "@/styles/skills.module.scss";
 import { Icon } from "@/components/Icon";
+import { SkillBrandIcon, type SkillBrand } from "@/components/skills/SkillBrandIcon";
 
 interface SkillCardProps {
   name: string;
@@ -11,6 +12,9 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ name, icon, title }: SkillCardProps) {
+  const isBrandIcon = icon.startsWith("brand:");
+  const brand = isBrandIcon ? (icon.slice(6) as SkillBrand) : null;
+
   return (
     <motion.article
       layout
@@ -22,7 +26,11 @@ export function SkillCard({ name, icon, title }: SkillCardProps) {
     >
       <div className={styles.skillCardGlow} />
       <div className={styles.skillIcon}>
-        <Icon name={icon} className={styles.skillIconGlyph} />
+        {isBrandIcon && brand ? (
+          <SkillBrandIcon brand={brand} />
+        ) : (
+          <Icon name={icon} className={styles.skillIconGlyph} />
+        )}
       </div>
       <h4 className={styles.skillName}>{name}</h4>
     </motion.article>

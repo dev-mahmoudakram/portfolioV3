@@ -40,18 +40,18 @@ const categories: CategoryConfig[] = [
     description: "Responsive, interactive interfaces built with modern component systems, state management, and performance-aware rendering.",
     note: "UI effects, reusable patterns, and production-grade interface thinking.",
     skills: [
-      { name: "HTML", icon: "code" },
-      { name: "CSS", icon: "code" },
-      { name: "SCSS", icon: "code" },
-      { name: "Tailwind CSS", icon: "code" },
-      { name: "Bootstrap", icon: "grid" },
-      { name: "JS", icon: "code" },
-      { name: "TS", title: "TypeScript", icon: "code" },
-      { name: "React", icon: "code" },
-      { name: "Next.js", icon: "bolt" },
-      { name: "Redux Toolkit", icon: "grid" },
-      { name: "React Query", icon: "chart" },
-      { name: "Blazor Server", icon: "code" }
+      { name: "HTML", icon: "brand:html5" },
+      { name: "CSS", icon: "brand:css" },
+      { name: "SCSS", icon: "brand:sass" },
+      { name: "Tailwind CSS", icon: "brand:tailwindcss" },
+      { name: "Bootstrap", icon: "brand:bootstrap" },
+      { name: "JS", title: "JavaScript", icon: "brand:javascript" },
+      { name: "TS", title: "TypeScript", icon: "brand:typescript" },
+      { name: "React", icon: "brand:react" },
+      { name: "Next.js", icon: "brand:nextdotjs" },
+      { name: "Redux Toolkit", icon: "brand:redux" },
+      { name: "React Query", icon: "brand:reactquery" },
+      { name: "Blazor Server", icon: "brand:blazor" }
     ]
   },
   {
@@ -62,10 +62,10 @@ const categories: CategoryConfig[] = [
     description: "Structured server-side work with MVC thinking, REST APIs, secure auth flows, and clean integration boundaries.",
     note: "Application flow, access control, and connected system design.",
     skills: [
-      { name: "Laravel", icon: "code" },
-      { name: "Livewire", icon: "bolt" },
+      { name: "Laravel", icon: "brand:laravel" },
+      { name: "Livewire", icon: "brand:livewire" },
       { name: "MVC", title: "MVC Architecture", icon: "sitemap" },
-      { name: "Node.js", title: "Node.js (Basics)", icon: "server" },
+      { name: "Node.js", title: "Node.js (Basics)", icon: "brand:nodedotjs" },
       { name: "REST APIs", icon: "plug" },
       { name: "Auth & Access", title: "Authentication & Authorization", icon: "shield" }
     ]
@@ -78,11 +78,10 @@ const categories: CategoryConfig[] = [
     description: "Reliable schema design, relational data modeling, and migration workflows built for maintainable systems.",
     note: "Storage strategy, structure, and data-layer clarity.",
     skills: [
-      { name: "MySQL", icon: "database" },
-      { name: "PostgreSQL", icon: "database" },
+      { name: "MySQL", icon: "brand:mysql" },
+      { name: "PostgreSQL", icon: "brand:postgresql" },
       { name: "SQL Server", icon: "table" },
-      { name: "Prisma ORM", icon: "database" },
-      { name: "Prisma Migrate", icon: "branch" }
+      { name: "Prisma ORM", icon: "brand:prisma" },
     ]
   },
   {
@@ -93,8 +92,8 @@ const categories: CategoryConfig[] = [
     description: "Flexible content-driven builds and storefront-ready implementations with practical customization and publishing workflows.",
     note: "Content blocks, commerce surfaces, and adaptable delivery.",
     skills: [
-      { name: "WordPress", icon: "grid" },
-      { name: "Shopify", icon: "grid" }
+      { name: "WordPress", icon: "brand:wordpress" },
+      { name: "Shopify", icon: "brand:shopify" }
     ]
   },
   {
@@ -105,9 +104,9 @@ const categories: CategoryConfig[] = [
     description: "Lightweight motion systems, interaction polish, and dimensional visual effects that support UX instead of slowing it down.",
     note: "Motion, particles, rhythm, and interaction depth.",
     skills: [
-      { name: "Framer Motion", icon: "wand" },
-      { name: "GSAP", icon: "bolt" },
-      { name: "Three.js", icon: "grid" }
+      { name: "Framer Motion", icon: "brand:framer" },
+      { name: "GSAP", icon: "brand:gsap" },
+      { name: "Three.js", icon: "brand:threedotjs" }
     ]
   },
   {
@@ -118,10 +117,10 @@ const categories: CategoryConfig[] = [
     description: "Practical workflow tools and search-focused optimization habits that keep products maintainable, visible, and launch-ready.",
     note: "Versioning, optimization, and real-world production habits.",
     skills: [
-      { name: "Git", icon: "git" },
-      { name: "GitHub", icon: "github" },
+      { name: "Git", icon: "brand:git" },
+      { name: "GitHub", icon: "brand:github" },
       { name: "SEO", icon: "search" },
-      { name: "Yoast SEO", icon: "chart" },
+      { name: "Yoast SEO", icon: "brand:yoast" },
       { name: "On-page SEO", icon: "chart" }
     ]
   }
