@@ -4,6 +4,7 @@ import type { Project } from "@/types";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Icon } from "@/components/Icon";
 
 interface ProjectsSectionProps {
   initialProjects: Project[];
@@ -97,12 +98,12 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
                 <div className="mt-6 flex gap-3">
                   {project.liveUrl ? (
                     <a href={project.liveUrl} className="ghost-button !px-4 !py-2 text-sm" target="_blank" rel="noreferrer">
-                      <i className="fa-solid fa-arrow-up-right-from-square" /> Live
+                      <Icon name="external-link" /> Live
                     </a>
                   ) : null}
                   {project.githubUrl ? (
                     <a href={project.githubUrl} className="ghost-button !px-4 !py-2 text-sm" target="_blank" rel="noreferrer">
-                      <i className="fa-brands fa-github" /> Code
+                      <Icon name="github" /> Code
                     </a>
                   ) : null}
                 </div>

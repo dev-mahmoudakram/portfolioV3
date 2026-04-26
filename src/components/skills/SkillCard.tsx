@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "@/styles/skills.module.scss";
+import { Icon } from "@/components/Icon";
 
 interface SkillCardProps {
   name: string;
@@ -11,8 +11,6 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ name, icon, title }: SkillCardProps) {
-  const isRemoteIcon = icon.startsWith("http");
-
   return (
     <motion.article
       layout
@@ -24,18 +22,7 @@ export function SkillCard({ name, icon, title }: SkillCardProps) {
     >
       <div className={styles.skillCardGlow} />
       <div className={styles.skillIcon}>
-        {isRemoteIcon ? (
-          <Image
-            src={icon}
-            alt=""
-            width={22}
-            height={22}
-            unoptimized
-            className={styles.skillIconImg}
-          />
-        ) : (
-          <i className={`${icon} ${styles.skillIconGlyph}`} aria-hidden="true" />
-        )}
+        <Icon name={icon} className={styles.skillIconGlyph} />
       </div>
       <h4 className={styles.skillName}>{name}</h4>
     </motion.article>

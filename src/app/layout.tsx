@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Poppins } from "next/font/google";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/styles/globals.scss";
 import { Navbar } from "@/components/Navbar";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const fredoka = Fredoka({
   subsets: ["latin"],
@@ -66,7 +64,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
         <Navbar />
-        {process.env.NODE_ENV === "production" && <SpeedInsights />}
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { Icon } from "@/components/Icon";
 
 const links = [
   { label: "About",      targetId: "about" },
@@ -134,14 +135,16 @@ export function Navbar() {
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/35 text-white backdrop-blur-xl lg:hidden"
         >
           <AnimatePresence mode="wait" initial={false}>
-            <motion.i
+            <motion.span
               key={menuOpen ? "close" : "open"}
-              className={`fa-solid ${menuOpen ? "fa-xmark" : "fa-bars"} text-base`}
+              className="inline-flex text-base"
               initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0,   opacity: 1 }}
               exit={{    rotate:  90, opacity: 0 }}
               transition={{ duration: 0.18 }}
-            />
+            >
+              <Icon name={menuOpen ? "close" : "menu"} />
+            </motion.span>
           </AnimatePresence>
         </button>
       </nav>

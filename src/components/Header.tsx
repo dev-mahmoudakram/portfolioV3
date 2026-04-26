@@ -1,3 +1,5 @@
+import { Icon } from "@/components/Icon";
+
 const links = ["about", "skills", "projects", "services", "experience", "contact"];
 
 export function Header() {
@@ -15,7 +17,7 @@ export function Header() {
           ))}
         </div>
         <a href="#contact" className="neon-button !px-4 !py-2 text-sm">
-          <i className="fa-solid fa-paper-plane" />
+          <Icon name="send" />
           Hire Me
         </a>
       </nav>

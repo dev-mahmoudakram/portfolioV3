@@ -5,14 +5,6 @@ const nextConfig = {
   serverExternalPackages: ["@prisma/client", "prisma"],
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"]
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**"
-      }
-    ]
   }
 };
 

@@ -31,100 +31,98 @@ interface SkillsSectionProps {
   skills?: Skill[];
 }
 
-const brandIcon = (slug: string) => `https://cdn.simpleicons.org/${slug}/ffffff?viewbox=auto`;
-
 const categories: CategoryConfig[] = [
   {
     id: "frontend",
     label: "Frontend",
-    icon: "fa-solid fa-desktop",
+    icon: "desktop",
     title: "Frontend Development",
     description: "Responsive, interactive interfaces built with modern component systems, state management, and performance-aware rendering.",
     note: "UI effects, reusable patterns, and production-grade interface thinking.",
     skills: [
-      { name: "HTML", icon: "fa-brands fa-html5" },
-      { name: "CSS", icon: "fa-brands fa-css3-alt" },
-      { name: "SCSS", icon: "fa-brands fa-sass" },
-      { name: "Tailwind CSS", icon: brandIcon("tailwindcss") },
-      { name: "Bootstrap", icon: "fa-brands fa-bootstrap" },
-      { name: "JS", icon: "fa-brands fa-js" },
-      { name: "TS", title: "TypeScript", icon: brandIcon("typescript") },
-      { name: "React", icon: "fa-brands fa-react" },
-      { name: "Next.js", icon: brandIcon("nextdotjs") },
-      { name: "Redux Toolkit", icon: brandIcon("redux") },
-      { name: "React Query", icon: brandIcon("reactquery") },
-      { name: "Blazor Server", icon: brandIcon("blazor") }
+      { name: "HTML", icon: "code" },
+      { name: "CSS", icon: "code" },
+      { name: "SCSS", icon: "code" },
+      { name: "Tailwind CSS", icon: "code" },
+      { name: "Bootstrap", icon: "grid" },
+      { name: "JS", icon: "code" },
+      { name: "TS", title: "TypeScript", icon: "code" },
+      { name: "React", icon: "code" },
+      { name: "Next.js", icon: "bolt" },
+      { name: "Redux Toolkit", icon: "grid" },
+      { name: "React Query", icon: "chart" },
+      { name: "Blazor Server", icon: "code" }
     ]
   },
   {
     id: "backend",
     label: "Backend",
-    icon: "fa-solid fa-code-branch",
+    icon: "branch",
     title: "Backend & APIs",
     description: "Structured server-side work with MVC thinking, REST APIs, secure auth flows, and clean integration boundaries.",
     note: "Application flow, access control, and connected system design.",
     skills: [
-      { name: "Laravel", icon: "fa-brands fa-laravel" },
-      { name: "Livewire", icon: "fa-solid fa-bolt-lightning" },
-      { name: "MVC", title: "MVC Architecture", icon: "fa-solid fa-sitemap" },
-      { name: "Node.js", title: "Node.js (Basics)", icon: "fa-brands fa-node-js" },
-      { name: "REST APIs", icon: "fa-solid fa-plug-circle-bolt" },
-      { name: "Auth & Access", title: "Authentication & Authorization", icon: "fa-solid fa-user-shield" }
+      { name: "Laravel", icon: "code" },
+      { name: "Livewire", icon: "bolt" },
+      { name: "MVC", title: "MVC Architecture", icon: "sitemap" },
+      { name: "Node.js", title: "Node.js (Basics)", icon: "server" },
+      { name: "REST APIs", icon: "plug" },
+      { name: "Auth & Access", title: "Authentication & Authorization", icon: "shield" }
     ]
   },
   {
     id: "databases",
     label: "Databases",
-    icon: "fa-solid fa-database",
+    icon: "database",
     title: "Databases & ORM",
     description: "Reliable schema design, relational data modeling, and migration workflows built for maintainable systems.",
     note: "Storage strategy, structure, and data-layer clarity.",
     skills: [
-      { name: "MySQL", icon: brandIcon("mysql") },
-      { name: "PostgreSQL", icon: brandIcon("postgresql") },
-      { name: "SQL Server", icon: "fa-solid fa-table-columns" },
-      { name: "Prisma ORM", icon: brandIcon("prisma") },
-      { name: "Prisma Migrate", icon: "fa-solid fa-code-pull-request" }
+      { name: "MySQL", icon: "database" },
+      { name: "PostgreSQL", icon: "database" },
+      { name: "SQL Server", icon: "table" },
+      { name: "Prisma ORM", icon: "database" },
+      { name: "Prisma Migrate", icon: "branch" }
     ]
   },
   {
     id: "cms",
     label: "CMS",
-    icon: "fa-solid fa-table-cells-large",
+    icon: "grid",
     title: "CMS & Platforms",
     description: "Flexible content-driven builds and storefront-ready implementations with practical customization and publishing workflows.",
     note: "Content blocks, commerce surfaces, and adaptable delivery.",
     skills: [
-      { name: "WordPress", icon: "fa-brands fa-wordpress" },
-      { name: "Shopify", icon: "fa-brands fa-shopify" }
+      { name: "WordPress", icon: "grid" },
+      { name: "Shopify", icon: "grid" }
     ]
   },
   {
     id: "animation",
     label: "Animation & 3D",
-    icon: "fa-solid fa-wand-magic-sparkles",
+    icon: "wand",
     title: "Animation & 3D Motion",
     description: "Lightweight motion systems, interaction polish, and dimensional visual effects that support UX instead of slowing it down.",
     note: "Motion, particles, rhythm, and interaction depth.",
     skills: [
-      { name: "Framer Motion", icon: "fa-solid fa-wave-square" },
-      { name: "GSAP", icon: "fa-solid fa-arrows-spin" },
-      { name: "Three.js", icon: "fa-solid fa-cube" }
+      { name: "Framer Motion", icon: "wand" },
+      { name: "GSAP", icon: "bolt" },
+      { name: "Three.js", icon: "grid" }
     ]
   },
   {
     id: "tools",
     label: "Tools & SEO",
-    icon: "fa-solid fa-screwdriver-wrench",
+    icon: "wrench",
     title: "Tools & SEO",
     description: "Practical workflow tools and search-focused optimization habits that keep products maintainable, visible, and launch-ready.",
     note: "Versioning, optimization, and real-world production habits.",
     skills: [
-      { name: "Git", icon: "fa-brands fa-git-alt" },
-      { name: "GitHub", icon: "fa-brands fa-github" },
-      { name: "SEO", icon: "fa-solid fa-magnifying-glass-chart" },
-      { name: "Yoast SEO", icon: "fa-solid fa-ranking-star" },
-      { name: "On-page SEO", icon: "fa-solid fa-chart-line" }
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github" },
+      { name: "SEO", icon: "search" },
+      { name: "Yoast SEO", icon: "chart" },
+      { name: "On-page SEO", icon: "chart" }
     ]
   }
 ];
@@ -165,8 +163,8 @@ export function SkillsSection(_: SkillsSectionProps) {
               <Image
                 src="/images/char/skills.png"
                 alt="Mahmoud Akram character portrait for the skills section"
-                width={520}
-                height={620}
+                width={370}
+                height={370}
                 className={styles.skillsCharacterImage}
                 priority={false}
               />
@@ -187,8 +185,8 @@ export function SkillsSection(_: SkillsSectionProps) {
               <Image
                 src="/images/char/skills.png"
                 alt="Mahmoud Akram character portrait for the skills section"
-                width={520}
-                height={620}
+                width={370}
+                height={370}
                 className={styles.skillsCharacterImage}
                 priority={false}
               />

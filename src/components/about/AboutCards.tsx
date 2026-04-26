@@ -7,22 +7,22 @@ const cards = [
   {
     title: "Frontend Development",
     description: "React, Next.js, TypeScript",
-    icon: "fa-solid fa-code"
+    icon: "code"
   },
   {
     title: "Backend Development",
     description: "Laravel, Prisma, REST APIs",
-    icon: "fa-solid fa-server"
+    icon: "server"
   },
   {
     title: "Databases",
     description: "MySQL, PostgreSQL",
-    icon: "fa-solid fa-database"
+    icon: "database"
   },
   {
     title: "Performance & SEO",
     description: "Optimized and scalable apps",
-    icon: "fa-solid fa-gauge-high"
+    icon: "gauge"
   }
 ];
 

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import styles from "./HeroSection.module.scss";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { Icon } from "@/components/Icon";
 
 interface ScrollDownButtonProps {
   targetId: string;
@@ -18,7 +19,7 @@ export function ScrollDownButton({ targetId, mobile = false }: ScrollDownButtonP
         aria-label="Scroll to next section"
         className={`inline-flex items-center gap-2.5 rounded-full border border-purple-500/40 bg-white/5 px-6 py-3 font-poppins text-sm font-medium text-white/80 backdrop-blur-sm transition hover:border-purple-400/60 hover:text-white ${styles.buttonSecondary}`}
       >
-        <i className="fa-solid fa-arrow-down text-xs" />
+        <Icon name="arrow-down" className="text-xs" />
         Scroll Down
       </button>
     );
@@ -34,7 +35,7 @@ export function ScrollDownButton({ targetId, mobile = false }: ScrollDownButtonP
       transition={{ duration: 1.6, ease: "easeInOut", repeat: Infinity }}
     >
       <span className={styles.scrollCircle}>
-        <i className="fa-solid fa-arrow-down text-xl" />
+        <Icon name="arrow-down" className="text-xl" />
       </span>
       <span className={styles.scrollLabel}>Scroll Down</span>
     </motion.button>

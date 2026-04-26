@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import styles from "@/styles/skills.module.scss";
+import { Icon } from "@/components/Icon";
 
 interface SkillsBackgroundEffectsProps {
   category: string;
@@ -17,10 +18,10 @@ const backendNodes = [
 ];
 
 const toolsIcons = [
-  "fa-brands fa-github",
-  "fa-brands fa-git-alt",
-  "fa-solid fa-magnifying-glass-chart",
-  "fa-solid fa-chart-line"
+  "github",
+  "git",
+  "search",
+  "chart"
 ];
 
 export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsProps) {
@@ -131,7 +132,7 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
           animate={{ y: [0, -8, 0] }}
           transition={{ duration: 3 + index * 0.25, repeat: Infinity }}
         >
-          <i className={icon} aria-hidden="true" />
+          <Icon name={icon} />
         </motion.div>
       ))}
     </div>

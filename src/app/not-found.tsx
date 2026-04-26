@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Icon } from "@/components/Icon";
 
 export default function NotFound() {
   return (
@@ -10,7 +11,7 @@ export default function NotFound() {
           <h1 className="font-fredoka text-6xl font-semibold text-white md:text-8xl">Lost in the neon.</h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/68">The page you requested does not exist, but the portfolio is still glowing nearby.</p>
           <Link href="/" className="neon-button mt-8">
-            <i className="fa-solid fa-arrow-left" />
+            <Icon name="arrow-left" />
             Back Home
           </Link>
         </div>

@@ -27,8 +27,8 @@ export function AboutCharacter() {
         <Image
           src="/images/char/about.png"
           alt="Mahmoud Akram thinking character illustration"
-          width={586}
-          height={760}
+          width={371}
+          height={371}
           className={styles.characterImage}
           priority={false}
         />

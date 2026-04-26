@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import styles from "@/styles/skills.module.scss";
+import { Icon } from "@/components/Icon";
 
 interface TabItem {
   id: string;
@@ -41,7 +42,7 @@ export function SkillTabs({ items, activeId, onSelect }: SkillTabsProps) {
             ) : null}
 
             <span className="relative z-[1] inline-flex items-center gap-2">
-              <i className={item.icon} aria-hidden="true" />
+              <Icon name={item.icon} />
               <span>{item.label}</span>
             </span>
           </button>

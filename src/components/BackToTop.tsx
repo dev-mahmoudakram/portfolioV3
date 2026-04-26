@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { Icon } from "@/components/Icon";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -35,7 +36,7 @@ export function BackToTop() {
           whileHover={{ y: -4 }}
           transition={{ duration: 0.28 }}
         >
-          <i className="fa-solid fa-arrow-up text-sm" />
+          <Icon name="arrow-up" className="text-sm" />
         </motion.button>
       )}
     </AnimatePresence>

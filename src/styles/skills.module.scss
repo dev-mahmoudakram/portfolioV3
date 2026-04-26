@@ -129,10 +129,12 @@
 }
 
 .eyebrow::before {
-  content: "\f085";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  font-size: 0.82rem;
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #b68cff;
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.78);
 }
 
 .gradientText {

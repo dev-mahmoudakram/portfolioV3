@@ -7,6 +7,7 @@ import styles from "@/components/HeroSection.module.scss";
 import { ScrollDownButton } from "@/components/ScrollDownButton";
 import { SocialRail, socialLinks } from "@/components/SocialRail";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { Icon } from "@/components/Icon";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 32 },
@@ -69,7 +70,6 @@ export function HeroSection() {
           className={styles.waveVideo}
         >
           <source src="/images/akram logo/animated-wave.webm" type="video/webm" />
-          <source src="/images/akram logo/animated-wave.mp4" type="video/mp4" />
         </video>
       </motion.div>
       <div className={styles.waveLayerSecondary} />
@@ -110,16 +110,16 @@ export function HeroSection() {
                 type="button"
                 onClick={() => scrollToSection("projects")}
                 className={`inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 font-fredoka text-lg font-medium text-white transition hover:-translate-y-0.5 ${styles.buttonPrimary}`}
-              >
-                View My Work
-                <i className="fa-solid fa-arrow-right" />
+                >
+                  View My Work
+                <Icon name="arrow-right" />
               </button>
               <button
                 type="button"
                 onClick={() => scrollToSection("contact")}
                 className={`inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 font-fredoka text-lg font-medium text-white transition hover:-translate-y-0.5 ${styles.buttonSecondary}`}
               >
-                <i className="fa-regular fa-envelope" />
+                <Icon name="envelope" />
                 Contact Me
               </button>
             </motion.div>
@@ -141,7 +141,7 @@ export function HeroSection() {
                   aria-label={item.label}
                   className={styles.socialLink}
                 >
-                  <i className={item.icon} />
+                  <Icon name={item.icon} />
                 </a>
               ))}
             </div>
@@ -155,8 +155,8 @@ export function HeroSection() {
               <Image
                 src="/images/char/hi.png"
                 alt="Mahmoud Akram waving character illustration"
-                width={910}
-                height={1213}
+                width={533}
+                height={600}
                 priority
                 className={styles.character}
               />

@@ -1,7 +1,7 @@
-import type { Project, Skill } from "@/types";
+import type { Project } from "@/types";
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { listProjects, listSkills } from "@/server/portfolio-data";
+import { listProjects } from "@/server/portfolio-data";
 
 const AboutSection     = dynamic(() => import("@/components/sections/AboutSection").then(m => m.AboutSection));
 const SkillsSection    = dynamic(() => import("@/components/sections/SkillsSection").then(m => m.SkillsSection));
@@ -44,32 +44,8 @@ const fallbackProjects: Project[] = [
   }
 ];
 
-const fallbackSkills: Skill[] = [
-  "Next.js,React,TypeScript,JavaScript,SCSS,Tailwind,Bootstrap"
-    .split(",")
-    .map((name, index) => ({ id: index + 1, name, category: "frontend", icon: "fa-solid fa-code", order: index, createdAt: new Date().toISOString() })),
-  ["NestJS", "Laravel", "Prisma", "MySQL"].map((name, index) => ({
-    id: index + 20,
-    name,
-    category: "backend",
-    icon: "fa-solid fa-server",
-    order: index,
-    createdAt: new Date().toISOString()
-  })),
-  ["Git", "GitHub", "Vercel", "Figma", "GSAP"].map((name, index) => ({
-    id: index + 40,
-    name,
-    category: "tools",
-    icon: "fa-solid fa-bolt",
-    order: index,
-    createdAt: new Date().toISOString()
-  }))
-].flat();
-
 export default async function HomePage() {
-  const [projectsResult, skillsResult] = await Promise.allSettled([listProjects(), listSkills()]);
-  const projects = projectsResult.status === "fulfilled" ? projectsResult.value : fallbackProjects;
-  const skills = skillsResult.status === "fulfilled" ? skillsResult.value : fallbackSkills;
+  const projects = await listProjects().catch(() => fallbackProjects);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -85,7 +61,7 @@ export default async function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeroSection />
       <AboutSection />
-      <SkillsSection skills={skills} />
+      <SkillsSection />
       <ProjectsSection initialProjects={projects} />
       <ServicesSection />
       <ExperienceSection />

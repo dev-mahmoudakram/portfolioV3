@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Icon } from "@/components/Icon";
 
 const services = [
-  ["Landing Pages",     "Launch pages engineered for clarity, trust, and conversion.",   "fa-solid fa-rocket"],
-  ["Portfolio Websites","Personal brands with strong hierarchy and memorable motion.",    "fa-solid fa-user-astronaut"],
-  ["Company Websites",  "Modern business sites with SEO-first architecture.",             "fa-solid fa-building"],
-  ["Admin Dashboards",  "Dense, usable interfaces for internal operations.",              "fa-solid fa-chart-line"],
-  ["SEO & Performance", "Technical cleanup that improves speed, indexing, and UX.",       "fa-solid fa-gauge"]
+  ["Landing Pages",     "Launch pages engineered for clarity, trust, and conversion.",   "rocket"],
+  ["Portfolio Websites","Personal brands with strong hierarchy and memorable motion.",    "user"],
+  ["Company Websites",  "Modern business sites with SEO-first architecture.",             "building"],
+  ["Admin Dashboards",  "Dense, usable interfaces for internal operations.",              "chart"],
+  ["SEO & Performance", "Technical cleanup that improves speed, indexing, and UX.",       "gauge"]
 ];
 
 const stagger = {
@@ -47,13 +48,15 @@ export function ServicesSection() {
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
             className="glass-card p-5"
           >
-            <motion.i
-              className={`${icon} text-2xl text-soft`}
+            <motion.span
+              className="inline-flex text-2xl text-soft"
               initial={{ scale: 0.7, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, ease: "backOut", delay: 0.2 }}
-            />
+            >
+              <Icon name={icon} />
+            </motion.span>
             <h3 className="mt-5 font-fredoka text-xl text-white">{title}</h3>
             <p className="mt-3 text-sm leading-6 text-white/62">{text}</p>
           </motion.article>

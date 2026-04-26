@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { sendContactMessage } from "@/services/contact.service";
+import { Icon } from "@/components/Icon";
 
 const stagger = {
   hidden: {},
@@ -57,10 +58,10 @@ export function ContactSection() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {[
-              ["fa-brands fa-github",    "GitHub",    "https://github.com"],
-              ["fa-brands fa-linkedin",  "LinkedIn",  "https://linkedin.com"],
-              ["fa-brands fa-whatsapp",  "WhatsApp",  "https://wa.me/"],
-              ["fa-solid fa-envelope",   "Email",     "mailto:hello@example.com"]
+              ["github",   "GitHub",   "https://github.com"],
+              ["linkedin", "LinkedIn", "https://linkedin.com"],
+              ["whatsapp", "WhatsApp", "https://wa.me/"],
+              ["envelope", "Email",    "mailto:hello@example.com"]
             ].map(([icon, label, href]) => (
               <motion.a
                 key={label}
@@ -71,7 +72,7 @@ export function ContactSection() {
                 variants={row}
                 whileHover={{ x: 4, transition: { duration: 0.18 } }}
               >
-                <i className={`${icon} text-soft`} />
+                <Icon name={icon} className="text-soft" />
                 {label}
               </motion.a>
             ))}
@@ -105,7 +106,7 @@ export function ContactSection() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <i className="fa-solid fa-paper-plane" />
+            <Icon name="send" />
             {status === "loading" ? "Sending..." : "Send Message"}
           </motion.button>
           {status === "success" && <p className="text-sm text-green-300 sm:col-span-2">Message saved successfully.</p>}
