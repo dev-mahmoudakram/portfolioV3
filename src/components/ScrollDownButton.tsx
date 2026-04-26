@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import styles from "./HeroSection.module.scss";
 import { scrollToSection } from "@/lib/scrollToSection";
 import { Icon } from "@/components/Icon";
@@ -26,18 +25,16 @@ export function ScrollDownButton({ targetId, mobile = false }: ScrollDownButtonP
   }
 
   return (
-    <motion.button
+    <button
       type="button"
       onClick={() => scrollToSection(targetId)}
       aria-label="Scroll to next section"
-      className={styles.scrollButton}
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 1.6, ease: "easeInOut", repeat: Infinity }}
+      className={`${styles.scrollButton} ${styles.scrollButtonFloat}`}
     >
       <span className={styles.scrollCircle}>
         <Icon name="arrow-down" className="text-xl" />
       </span>
       <span className={styles.scrollLabel}>Scroll Down</span>
-    </motion.button>
+    </button>
   );
 }

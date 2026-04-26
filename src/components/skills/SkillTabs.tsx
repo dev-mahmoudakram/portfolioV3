@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import styles from "@/styles/skills.module.scss";
 import { Icon } from "@/components/Icon";
 
@@ -34,11 +33,7 @@ export function SkillTabs({ items, activeId, onSelect }: SkillTabsProps) {
             className={`${styles.tabButton} ${isActive ? styles.tabButtonActive : ""}`}
           >
             {isActive ? (
-              <motion.span
-                layoutId="skills-active-tab"
-                className={styles.tabActiveBackground}
-                transition={{ type: "spring", stiffness: 320, damping: 30 }}
-              />
+              <span className={styles.tabActiveBackground} />
             ) : null}
 
             <span className="relative z-[1] inline-flex items-center gap-2">

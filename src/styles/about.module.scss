@@ -107,6 +107,16 @@
     0 0 26px rgba(78, 42, 190, 0.12);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: rgba(146, 100, 255, 0.36);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 20px 44px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(78, 42, 190, 0.16);
 }
 
 .featureCard::before {
@@ -162,6 +172,10 @@
   justify-content: center;
   width: min(100%, 26rem);
   min-height: 32rem;
+}
+
+.characterFloat {
+  animation: characterFloat 4.5s ease-in-out infinite;
 }
 
 .characterGlow {
@@ -230,6 +244,34 @@
   width: min(100%, 28rem);
   height: auto;
   filter: drop-shadow(0 0 36px rgba(78, 42, 190, 0.48)) drop-shadow(0 18px 42px rgba(0, 0, 0, 0.44));
+}
+
+@keyframes characterFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureCard {
+    transition: none;
+  }
+
+  .featureCard:hover {
+    transform: none;
+  }
+
+  .characterFloat {
+    animation: none;
+  }
 }
 
 @media (max-width: 1023px) {

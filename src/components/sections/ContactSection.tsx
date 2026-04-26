@@ -1,19 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
 import { sendContactMessage } from "@/services/contact.service";
 import { Icon } from "@/components/Icon";
-
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } }
-};
-
-const row = {
-  hidden: { opacity: 0, y: 18 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.5 } }
-};
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -42,50 +31,33 @@ export function ContactSection() {
       <div className="flex flex-1 items-center lg:py-28">
       <div className="grid w-full gap-8 lg:grid-cols-[0.85fr_1.15fr]">
 
-        <motion.div
-          initial={{ opacity: 0, x: -32 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
-        >
+        <div>
           <span className="eyebrow">Contact</span>
           <h2 className="section-title">Let&apos;s build something fast, sharp, and memorable.</h2>
-          <motion.div
-            className="mt-8 grid gap-3 text-white/72"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-          >
+          <div className="mt-8 grid gap-3 text-white/72">
             {[
               ["github",   "GitHub",   "https://github.com"],
               ["linkedin", "LinkedIn", "https://linkedin.com"],
               ["whatsapp", "WhatsApp", "https://wa.me/"],
               ["envelope", "Email",    "mailto:hello@example.com"]
             ].map(([icon, label, href]) => (
-              <motion.a
+              <a
                 key={label}
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel={href.startsWith("mailto") ? undefined : "noreferrer"}
-                className="flex items-center gap-3 transition hover:text-white"
-                variants={row}
-                whileHover={{ x: 4, transition: { duration: 0.18 } }}
+                className="flex items-center gap-3 transition hover:translate-x-1 hover:text-white"
               >
                 <Icon name={icon} className="text-soft" />
                 {label}
-              </motion.a>
+              </a>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.form
+        <form
           onSubmit={handleSubmit}
           className="glass-card grid gap-4 p-6 sm:grid-cols-2"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
         >
           <input name="name"    required minLength={2} placeholder="Name"    className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
           <input name="email"   required type="email"  placeholder="Email"   className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
@@ -99,19 +71,17 @@ export function ContactSection() {
             rows={6}
             className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft sm:col-span-2"
           />
-          <motion.button
+          <button
             disabled={status === "loading"}
             type="submit"
-            className="neon-button sm:col-span-2"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="neon-button sm:col-span-2 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
           >
             <Icon name="send" />
             {status === "loading" ? "Sending..." : "Send Message"}
-          </motion.button>
+          </button>
           {status === "success" && <p className="text-sm text-green-300 sm:col-span-2">Message saved successfully.</p>}
           {status === "error"   && <p className="text-sm text-red-300   sm:col-span-2">Something went wrong. Please try again.</p>}
-        </motion.form>
+        </form>
 
       </div>
       </div>

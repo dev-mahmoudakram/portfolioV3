@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
 import styles from "@/styles/skills.module.scss";
-import { Icon } from "@/components/Icon";
 
 interface SkillsBackgroundEffectsProps {
   category: string;
@@ -17,29 +15,22 @@ const backendNodes = [
   { x: 74, y: 148 }
 ];
 
-const toolsIcons = [
-  "github",
-  "git",
-  "search",
-  "chart"
-];
-
 export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsProps) {
   if (category === "frontend") {
     return (
       <div className={styles.visualStage} aria-hidden="true">
-        <motion.div className={styles.frontCardPrimary} animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+        <div className={`${styles.frontCardPrimary} ${styles.floatPrimary}`}>
           <span className={styles.frontDots} />
           <span className={styles.frontLineLong} />
           <span className={styles.frontLineShort} />
           <span className={styles.frontPreview} />
-        </motion.div>
-        <motion.div className={styles.frontCardMini} animate={{ x: [0, 8, 0] }} transition={{ duration: 3.8, repeat: Infinity }}>
+        </div>
+        <div className={`${styles.frontCardMini} ${styles.floatSide}`}>
           <span className={styles.frontMiniLine} />
-        </motion.div>
-        <motion.div className={styles.frontBadge} animate={{ rotate: [0, 4, 0] }} transition={{ duration: 4.5, repeat: Infinity }}>
+        </div>
+        <div className={`${styles.frontBadge} ${styles.floatRotate}`}>
           <span className={styles.frontBadgeText}>Aa</span>
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -52,15 +43,16 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
           <path d="M110 92 L74 148" className={styles.backendPathSoft} />
           <path d="M170 64 L165 170" className={styles.backendPathSoft} />
           {backendNodes.map((node, index) => (
-            <motion.circle
+            <circle
               key={`${node.x}-${node.y}`}
               cx={node.x}
               cy={node.y}
               r="5.5"
-              className={styles.backendNodeSvg}
-              animate={{ scale: [1, 1.18, 1], opacity: [0.72, 1, 0.72] }}
-              transition={{ duration: 2.8, repeat: Infinity, delay: index * 0.18 }}
-              style={{ transformOrigin: `${node.x}px ${node.y}px` }}
+              className={`${styles.backendNodeSvg} ${styles.backendNodePulse}`}
+              style={{
+                transformOrigin: `${node.x}px ${node.y}px`,
+                animationDelay: `${index * 0.18}s`
+              }}
             />
           ))}
         </svg>
@@ -73,11 +65,11 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
       <div className={styles.visualStage} aria-hidden="true">
         <div className={styles.databaseGrid} />
         <div className={styles.databaseCenter}>
-          <motion.div className={styles.databaseStack} animate={{ y: [0, -6, 0] }} transition={{ duration: 3.8, repeat: Infinity }}>
+          <div className={`${styles.databaseStack} ${styles.floatPrimary}`}>
             <span className={styles.databaseDisk} />
             <span className={styles.databaseDisk} />
             <span className={styles.databaseDisk} />
-          </motion.div>
+          </div>
         </div>
       </div>
     );
@@ -86,12 +78,12 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
   if (category === "cms") {
     return (
       <div className={styles.visualStage} aria-hidden="true">
-        <motion.div className={styles.cmsBoard} animate={{ rotate: [0, 1.2, 0] }} transition={{ duration: 4.2, repeat: Infinity }}>
+        <div className={`${styles.cmsBoard} ${styles.floatRotateSoft}`}>
           <span className={styles.cmsTilePrimary} />
           <span className={styles.cmsTile} />
           <span className={styles.cmsTileTall} />
           <span className={styles.cmsTileWide} />
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -100,11 +92,7 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
     return (
       <div className={styles.visualStage} aria-hidden="true">
         <div className={styles.animationCubeCenter}>
-          <motion.div
-            className={styles.animationCubeWrap}
-            animate={{ y: [0, -10, 0], rotateZ: [0, 2, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          >
+          <div className={`${styles.animationCubeWrap} ${styles.floatCube}`}>
             <div className={styles.animationCubeScene}>
               <div className={styles.animationCube}>
                 <span className={`${styles.cubeFace} ${styles.cubeFront}`} />
@@ -115,7 +103,7 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
                 <span className={`${styles.cubeFace} ${styles.cubeBottom}`} />
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     );
@@ -123,18 +111,27 @@ export function SkillsBackgroundEffects({ category }: SkillsBackgroundEffectsPro
 
   return (
     <div className={styles.visualStage} aria-hidden="true">
-      <div className={styles.toolsConnector} />
-      {toolsIcons.map((icon, index) => (
-        <motion.div
-          key={icon}
-          className={styles.toolsChip}
-          style={{ top: `${20 + index * 14}%`, left: `${18 + (index % 2) * 34}%` }}
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 3 + index * 0.25, repeat: Infinity }}
-        >
-          <Icon name={icon} />
-        </motion.div>
-      ))}
+      <div className={styles.seoChartBoard}>
+        <div className={styles.seoChartHeader}>
+          <span>Performance</span>
+          <span className={styles.seoChartBadge}>+99</span>
+        </div>
+        <div className={styles.seoChartGrid} />
+
+        <div className={styles.seoChartBars} role="presentation">
+          <span className={`${styles.seoBar} ${styles.seoBarFcp}`} />
+          <span className={`${styles.seoBar} ${styles.seoBarLcp}`} />
+          <span className={`${styles.seoBar} ${styles.seoBarTbt}`} />
+          <span className={`${styles.seoBar} ${styles.seoBarCls}`} />
+          <span className={`${styles.seoBar} ${styles.seoBarSi}`} />
+        </div>
+
+        <div className={styles.seoKpiRow}>
+          <span className={styles.seoKpiChip}>FCP 0.3s</span>
+          <span className={styles.seoKpiChip}>LCP 0.9s</span>
+          <span className={styles.seoKpiChip}>CLS 0.00</span>
+        </div>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import type { Skill } from "@/types";
-import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { SkillTabs } from "@/components/skills/SkillTabs";
 import { SkillsBackgroundEffects } from "@/components/skills/SkillsBackgroundEffects";
@@ -139,13 +138,7 @@ export function SkillsSection(_: SkillsSectionProps) {
       <div className={styles.sectionGlowLeft} />
       <div className={styles.sectionGlowRight} />
 
-      <motion.div
-        className="section-shell relative z-[1] grid h-full content-start gap-5 md:content-center xl:grid-cols-[20rem_minmax(0,1fr)] xl:gap-8"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.16 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div className="section-shell relative z-[1] grid h-full content-start gap-5 md:content-center xl:grid-cols-[20rem_minmax(0,1fr)] xl:gap-8">
         <div className={styles.copyColumn}>
           <span className={styles.eyebrow}>Skills</span>
           <h2 className="mt-4 font-fredoka text-[2.7rem] font-semibold leading-[0.92] text-white sm:text-[4rem] xl:text-[4.7rem]">
@@ -154,11 +147,7 @@ export function SkillsSection(_: SkillsSectionProps) {
           <div className={styles.titleBar} />
           <div className={`${styles.skillsCharacterWrap} hidden xl:block`}>
             <div className={styles.skillsCharacterGlow} />
-            <motion.div
-              className={styles.skillsCharacter}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
               <Image
                 src="/images/char/skills.png"
                 alt="Mahmoud Akram character portrait for the skills section"
@@ -167,7 +156,7 @@ export function SkillsSection(_: SkillsSectionProps) {
                 className={styles.skillsCharacterImage}
                 priority={false}
               />
-            </motion.div>
+            </div>
           </div>
         </div>
 
@@ -176,11 +165,7 @@ export function SkillsSection(_: SkillsSectionProps) {
 
           <div className={`${styles.skillsCharacterWrap} xl:hidden`}>
             <div className={styles.skillsCharacterGlow} />
-            <motion.div
-              className={styles.skillsCharacter}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
               <Image
                 src="/images/char/skills.png"
                 alt="Mahmoud Akram character portrait for the skills section"
@@ -189,43 +174,34 @@ export function SkillsSection(_: SkillsSectionProps) {
                 className={styles.skillsCharacterImage}
                 priority={false}
               />
-            </motion.div>
+            </div>
           </div>
 
           <div className={styles.panel} id={`skills-panel-${activeCategory.id}`} role="tabpanel" aria-labelledby={`skills-tab-${activeCategory.id}`}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCategory.id}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.32 }}
-                className="grid h-full min-h-0 gap-4 xl:grid-cols-[minmax(0,0.56fr)_minmax(21rem,0.44fr)]"
-              >
-                <div className="flex min-h-0 flex-col">
-                  <div className="pr-2">
-                    <p className={styles.panelLabel}>{activeCategory.label}</p>
-                    <h3 className="mt-2 font-fredoka text-[1.9rem] font-medium leading-tight text-white xl:text-[2.1rem]">
-                      {activeCategory.title}
-                    </h3>
-                    <div className={styles.panelBar} />
-                    <p className={styles.panelDescription}>{activeCategory.description}</p>
-                    <p className={`${styles.panelNote} hidden sm:block`}>{activeCategory.note}</p>
-                  </div>
-
-                  <div className="mt-5 min-h-0 flex-1">
-                    <SkillsGrid skills={activeCategory.skills} />
-                  </div>
+            <div key={activeCategory.id} className="grid h-full min-h-0 gap-4 xl:grid-cols-[minmax(0,0.56fr)_minmax(21rem,0.44fr)]">
+              <div className="flex min-h-0 flex-col">
+                <div className="pr-2">
+                  <p className={styles.panelLabel}>{activeCategory.label}</p>
+                  <h3 className="mt-2 font-fredoka text-[1.9rem] font-medium leading-tight text-white xl:text-[2.1rem]">
+                    {activeCategory.title}
+                  </h3>
+                  <div className={styles.panelBar} />
+                  <p className={styles.panelDescription}>{activeCategory.description}</p>
+                  <p className={`${styles.panelNote} hidden sm:block`}>{activeCategory.note}</p>
                 </div>
 
-                <div className={`${styles.visualColumn} hidden xl:block`}>
-                  <SkillsBackgroundEffects category={activeCategory.id} />
+                <div className="mt-5 min-h-0 flex-1">
+                  <SkillsGrid skills={activeCategory.skills} />
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+
+              <div className={`${styles.visualColumn} hidden xl:block`}>
+                <SkillsBackgroundEffects category={activeCategory.id} />
+              </div>
+            </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

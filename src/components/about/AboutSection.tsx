@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { AboutCards } from "@/components/about/AboutCards";
 import { AboutCharacter } from "@/components/about/AboutCharacter";
 import { AboutText } from "@/components/about/AboutText";
@@ -13,13 +10,7 @@ export function AboutSection() {
       <div className={styles.sectionGlowBottom} />
 
       <div className="section-shell">
-        <motion.div
-          className="grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr]"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="order-1 relative z-[1] lg:order-1">
             <AboutText />
             <div className="lg:hidden">
@@ -31,7 +22,7 @@ export function AboutSection() {
           <div className="hidden lg:block lg:order-2">
             <AboutCharacter />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

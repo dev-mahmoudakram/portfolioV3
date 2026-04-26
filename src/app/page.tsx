@@ -1,13 +1,13 @@
 import type { Project } from "@/types";
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { listProjects } from "@/server/portfolio-data";
 
-const AboutSection     = dynamic(() => import("@/components/sections/AboutSection").then(m => m.AboutSection));
 const SkillsSection    = dynamic(() => import("@/components/sections/SkillsSection").then(m => m.SkillsSection));
 const ProjectsSection  = dynamic(() => import("@/components/sections/ProjectsSection").then(m => m.ProjectsSection));
-const ServicesSection  = dynamic(() => import("@/components/sections/ServicesSection").then(m => m.ServicesSection));
-const ExperienceSection = dynamic(() => import("@/components/sections/ExperienceSection").then(m => m.ExperienceSection));
 const ContactSection   = dynamic(() => import("@/components/sections/ContactSection").then(m => m.ContactSection));
 const BackToTop        = dynamic(() => import("@/components/BackToTop").then(m => m.BackToTop));
 
