@@ -77,35 +77,35 @@ export function HeroSection() {
       <SocialRail />
 
       <div className={`section-shell ${styles.content}`}>
-        <div className="grid min-h-[100svh] items-center gap-10 pb-12 pt-8 sm:pt-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-6 lg:pb-20 lg:pt-16 xl:pb-24 xl:pt-20">
+        <div className="grid min-h-[100svh] items-center gap-6 pb-10 pt-6 sm:pt-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-6 lg:pb-14 lg:pt-12 xl:pb-16 xl:pt-14">
           <div className="max-w-2xl">
             <motion.p
-              className="font-poppins text-2xl font-medium leading-tight text-white/86 md:text-[2rem]"
+              className="font-poppins text-xl font-medium leading-tight text-white/86 md:text-[1.6rem]"
               {...fadeUp(0.1)}
             >
               Hi, I&apos;m <span className={styles.gradientName}>Mahmoud Akram</span>
             </motion.p>
 
-            <h1 className="mt-5 font-fredoka text-[4.25rem] font-semibold leading-[0.88] text-white sm:text-[5.7rem] md:text-[7rem] lg:text-[7.7rem] xl:text-[8.5rem]">
+            <h1 className="mt-3 font-fredoka text-[3.4rem] font-semibold leading-[0.88] text-white sm:text-[4.4rem] md:text-[5.2rem] lg:text-[5.6rem] xl:text-[6.2rem]">
               <motion.span className="block text-white" {...fadeUp(0.2)}>Web</motion.span>
               <motion.span className={`block ${styles.titleGradient}`} {...fadeUp(0.32)}>Developer</motion.span>
             </h1>
 
             <motion.p
-              className="mt-5 font-fredoka text-2xl font-medium leading-tight text-white md:text-[2.2rem]"
+              className="mt-3 font-fredoka text-xl font-medium leading-tight text-white md:text-[1.75rem]"
               {...fadeUp(0.44)}
             >
               Built for Speed. <span className={styles.titleGradient}>Designed to Impress.</span>
             </motion.p>
 
             <motion.p
-              className={`${styles.description} mt-6 max-w-xl font-poppins text-lg leading-8 text-white/64 md:text-xl`}
+              className={`${styles.description} mt-4 max-w-xl font-poppins text-base leading-7 text-white/64 md:text-lg`}
               {...fadeUp(0.54)}
             >
               I build modern, high-performance web experiences using Next.js, NestJS, and clean scalable architecture.
             </motion.p>
 
-            <motion.div className="mt-10 hidden flex-wrap gap-4 sm:flex" {...fadeUp(0.64)}>
+            <motion.div className="mt-7 hidden flex-wrap gap-4 sm:flex" {...fadeUp(0.64)}>
               <button
                 type="button"
                 onClick={() => scrollToSection("projects")}
