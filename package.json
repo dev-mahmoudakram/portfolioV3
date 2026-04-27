@@ -13,10 +13,10 @@
     "prisma:seed": "node prisma/seed.mjs"
   },
   "browserslist": [
-    "Chrome >= 109",
-    "Edge >= 109",
-    "Firefox >= 115",
-    "Safari >= 16.4"
+    "last 1 Chrome version",
+    "last 1 Edge version",
+    "last 1 Firefox version",
+    "last 1 Safari version"
   ],
   "dependencies": {
     "@prisma/client": "^5.13.0",
