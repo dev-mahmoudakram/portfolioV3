@@ -38,7 +38,8 @@ const paths: Record<string, string[]> = {
   plug: ["M12 22v-5", "M9 8V2", "M15 8V2", "M6 8h12v4a6 6 0 0 1-12 0Z"],
   table: ["M3 5h18v14H3z", "M3 10h18", "M9 5v14", "M15 5v14"],
   git: ["M15 6a3 3 0 1 0-3 3", "M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z", "M6 9v6a3 3 0 1 0 3 3", "M9 6h3"],
-  search: ["M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z", "m21 21-4.3-4.3"]
+  search: ["M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z", "m21 21-4.3-4.3"],
+  download: ["M12 3v13", "m7 11 5 5 5-5", "M5 21h14"]
 };
 
 function normalizeIconName(name: string) {
@@ -75,6 +76,7 @@ function normalizeIconName(name: string) {
   if (name.includes("table-columns")) return "table";
   if (name.includes("git")) return "git";
   if (name.includes("magnifying")) return "search";
+  if (name.includes("download")) return "download";
   if (paths[name]) return name;
   return "code";
 }

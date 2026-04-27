@@ -31,7 +31,7 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
                     src={project.image || "/images/project-placeholder.svg"}
                     alt={`${project.title} preview`}
                     fill
-                    sizes="(min-width: 1024px) 66vw, 100vw"
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
                     className="object-cover"
                   />
                 </div>
@@ -70,7 +70,7 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
               src="/images/char/projects.png"
               alt="Projects illustration"
               fill
-              sizes="(min-width: 1024px) 33vw, 100vw"
+              sizes="(min-width: 1024px) 22vw, 0px"
               className="object-contain object-top"
               priority
             />

@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { scrollToSection } from "@/lib/scrollToSection";
 import { Icon } from "@/components/Icon";
@@ -17,6 +19,11 @@ const links = [
 const sectionIds = links.map((item) => item.targetId);
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // Map non-home routes to their matching nav link id
+  const routeActiveId = pathname === "/projects" ? "projects" : "";
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>("");
   const [heroVisible, setHeroVisible] = useState(true);
@@ -42,6 +49,7 @@ export function Navbar() {
     window.addEventListener("resize", setScrollbarWidth, { passive: true });
 
     const hero = document.getElementById("home");
+    if (!hero) setHeroVisible(false);
     const heroObserver = hero
       ? new IntersectionObserver(([entry]) => setHeroVisible(entry.isIntersecting), {
         root: observerRoot,
@@ -108,41 +116,64 @@ export function Navbar() {
       }`}
     >
       <nav className="section-shell flex items-center justify-between py-4" aria-label="Primary">
-        <button
-          type="button"
-          onClick={() => scrollToSection("home", 0)}
-          className="flex items-center transition hover:opacity-90"
-          aria-label="Scroll to top"
-        >
-          <Image
-            src="/images/akram%20logo/logo-11.png"
-            alt="Mahmoud Akram logo"
-            width={291}
-            height={93}
-            priority
-            className="h-auto w-[170px] object-contain sm:w-[210px]"
-          />
-        </button>
+        {isHome ? (
+          <button
+            type="button"
+            onClick={() => scrollToSection("home", 0)}
+            className="flex items-center transition hover:opacity-90"
+            aria-label="Scroll to top"
+          >
+            <Image
+              src="/images/akram%20logo/logo-11.png"
+              alt="Mahmoud Akram logo"
+              width={291}
+              height={93}
+              priority
+              className="h-auto w-[170px] object-contain sm:w-[210px]"
+            />
+          </button>
+        ) : (
+          <Link href="/" className="flex items-center transition hover:opacity-90" aria-label="Go to homepage">
+            <Image
+              src="/images/akram%20logo/logo-11.png"
+              alt="Mahmoud Akram logo"
+              width={291}
+              height={93}
+              priority
+              className="h-auto w-[170px] object-contain sm:w-[210px]"
+            />
+          </Link>
+        )}
 
         <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/35 px-3 py-2 backdrop-blur-xl lg:flex">
           {links.map((link) => {
-            const isActive = activeId === link.targetId;
-            return (
-              <button
-                key={link.targetId}
-                type="button"
-                onClick={() => scrollToSection(link.targetId)}
-                className={`relative rounded-full px-4 py-1.5 font-poppins text-[0.96rem] font-medium transition-all duration-300 ${
-                  isActive
-                    ? "bg-white/10 text-white shadow-[0_0_12px_rgba(113,72,212,0.35)]"
-                    : "text-white/60 hover:text-white/90"
-                }`}
-              >
+            const isActive = (isHome ? activeId : routeActiveId) === link.targetId;
+            const className = `relative rounded-full px-4 py-1.5 font-poppins text-[0.96rem] font-medium transition-all duration-300 ${
+              isActive
+                ? "bg-white/10 text-white shadow-[0_0_12px_rgba(113,72,212,0.35)]"
+                : "text-white/60 hover:text-white/90"
+            }`;
+            const inner = (
+              <>
                 {isActive ? (
                   <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600/20 to-indigo-600/20 ring-1 ring-purple-500/30" />
                 ) : null}
                 <span className="relative">{link.label}</span>
+              </>
+            );
+            return isHome ? (
+              <button
+                key={link.targetId}
+                type="button"
+                onClick={() => scrollToSection(link.targetId)}
+                className={className}
+              >
+                {inner}
               </button>
+            ) : (
+              <Link key={link.targetId} href={`/#${link.targetId}`} className={className}>
+                {inner}
+              </Link>
             );
           })}
         </div>
@@ -165,23 +196,30 @@ export function Navbar() {
           <div className="rounded-[24px] border border-white/10 bg-black/80 p-4 shadow-[0_18px_44px_rgba(0,0,0,0.28)] backdrop-blur-xl">
             <div className="grid gap-2">
               {links.map((link) => {
-                const isActive = activeId === link.targetId;
-                return (
+                const isActive = (isHome ? activeId : routeActiveId) === link.targetId;
+                const cls = `rounded-2xl px-4 py-3 text-left font-poppins text-sm font-medium transition-all ${
+                  isActive
+                    ? "bg-purple-600/20 text-white ring-1 ring-purple-500/30"
+                    : "text-white/70 hover:bg-white/5 hover:text-white"
+                }`;
+                return isHome ? (
                   <button
                     key={link.targetId}
                     type="button"
-                    onClick={() => {
-                      scrollToSection(link.targetId);
-                      setMenuOpen(false);
-                    }}
-                    className={`rounded-2xl px-4 py-3 text-left font-poppins text-sm font-medium transition-all ${
-                      isActive
-                        ? "bg-purple-600/20 text-white ring-1 ring-purple-500/30"
-                        : "text-white/70 hover:bg-white/5 hover:text-white"
-                    }`}
+                    onClick={() => { scrollToSection(link.targetId); setMenuOpen(false); }}
+                    className={cls}
                   >
                     {link.label}
                   </button>
+                ) : (
+                  <Link
+                    key={link.targetId}
+                    href={`/#${link.targetId}`}
+                    onClick={() => setMenuOpen(false)}
+                    className={cls}
+                  >
+                    {link.label}
+                  </Link>
                 );
               })}
             </div>

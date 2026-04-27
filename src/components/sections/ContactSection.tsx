@@ -37,10 +37,10 @@ export function ContactSection() {
           <h2 className="section-title">Let&apos;s build something fast, sharp, and memorable.</h2>
           <div className="mt-8 grid gap-3 text-white/72">
             {[
-              ["github",   "GitHub",   "https://github.com"],
-              ["linkedin", "LinkedIn", "https://linkedin.com"],
-              ["whatsapp", "WhatsApp", "https://wa.me/"],
-              ["envelope", "Email",    "mailto:hello@example.com"]
+              ["github",   "GitHub",   "https://github.com/dev-mahmoudakram"],
+              ["linkedin", "LinkedIn", "https://www.linkedin.com/in/mahmoud-akram-5918a5285"],
+              ["whatsapp", "WhatsApp", "https://wa.me/201204135813"],
+              ["envelope", "Email",    "mailto:vkram101@icloud.com"]
             ].map(([icon, label, href]) => (
               <a
                 key={label}

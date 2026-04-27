@@ -56,6 +56,14 @@ export function HeroSection() {
                 <Icon name="envelope" />
                 Contact Me
               </button>
+              <a
+                href="/docs/Mahmoud_Akram_CV.pdf"
+                download
+                className={`inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 font-fredoka text-lg font-medium text-white transition hover:-translate-y-0.5 ${styles.buttonSecondary}`}
+              >
+                <Icon name="download" />
+                Resume
+              </a>
             </div>
           </div>
 

@@ -10,7 +10,7 @@ interface ProjectsCatalogProps {
 
 export function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
   return (
-    <section className="section-shell pb-20 pt-28">
+    <section className="section-shell pb-20 pt-40">
       <RevealSection variant="up-sm" className="mb-10 flex flex-wrap items-end justify-between gap-4">
         <div>
           <span className="eyebrow">Projects</span>

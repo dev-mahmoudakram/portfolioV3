@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: false,
   output: "standalone",
   serverExternalPackages: ["@prisma/client", "prisma"],
+  experimental: {
+    browsersListForSwc: true,
+  },
   images: {
     remotePatterns: [
       {

@@ -236,7 +236,7 @@
 .socialRail {
   position: absolute;
   left: 2rem;
-  top: 50%;
+  top: 30%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -346,14 +346,12 @@
 
 @keyframes heroDropIn {
   0% {
-    opacity: 0;
-    transform: translateY(-36px) scale(0.97);
+    transform: translateY(-28px) scale(0.97);
   }
   70% {
-    transform: translateY(6px) scale(1.01);
+    transform: translateY(5px) scale(1.01);
   }
   100% {
-    opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
@@ -392,9 +390,9 @@
   animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both;
 }
 
-/* character + glow shell */
+/* character + glow shell — transform only, no opacity so LCP image is always visible */
 .heroCharacterEntrance {
-  animation: heroDropIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+  animation: heroDropIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* social rail (desktop) */

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { Skill } from "@/types";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { SkillTabs } from "@/components/skills/SkillTabs";
 import { SkillsBackgroundEffects } from "@/components/skills/SkillsBackgroundEffects";
 import { SkillsGrid } from "@/components/skills/SkillsGrid";
@@ -129,11 +129,34 @@ const categories: CategoryConfig[] = [
 
 export function SkillsSection(_: SkillsSectionProps) {
   const [activeId, setActiveId] = useState<CategoryId>("frontend");
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const activeCategory = useMemo(
     () => categories.find((category) => category.id === activeId) ?? categories[0],
     [activeId]
   );
+
+  function handleTabSelect(id: string) {
+    setActiveId(id as CategoryId);
+    if (window.matchMedia("(max-width: 1279px)").matches) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const panel = panelRef.current;
+          if (!panel) return;
+          const container = document.querySelector<HTMLElement>(".scroll-container") ?? document.documentElement;
+          // Snap-stop any in-progress scroll so scrollTop is settled before we measure
+          container.scrollTo({ top: container.scrollTop, behavior: "instant" as ScrollBehavior });
+          const navbar = document.querySelector<HTMLElement>("header");
+          const navbarVisible = navbar ? getComputedStyle(navbar).opacity !== "0" : false;
+          const navbarH = navbarVisible ? (navbar?.offsetHeight ?? 0) : 0;
+          const containerRect = container.getBoundingClientRect();
+          const panelRect = panel.getBoundingClientRect();
+          const target = container.scrollTop + (panelRect.top - containerRect.top) - navbarH - 180;
+          container.scrollTo({ top: target, behavior: "smooth" });
+        });
+      });
+    }
+  }
 
   return (
     <section id="skills" className={`snap-section ${styles.skillsSection}`}>
@@ -163,7 +186,7 @@ export function SkillsSection(_: SkillsSectionProps) {
         </RevealSection>
 
         <RevealSection variant="right" delay={1} className={styles.panelWrap}>
-          <SkillTabs items={categories} activeId={activeId} onSelect={(id) => setActiveId(id as CategoryId)} />
+          <SkillTabs items={categories} activeId={activeId} onSelect={handleTabSelect} />
 
           <div className={`${styles.skillsCharacterWrap} xl:hidden`}>
             <div className={styles.skillsCharacterGlow} />
@@ -179,7 +202,7 @@ export function SkillsSection(_: SkillsSectionProps) {
             </div>
           </div>
 
-          <div className={styles.panel} id={`skills-panel-${activeCategory.id}`} role="tabpanel" aria-labelledby={`skills-tab-${activeCategory.id}`}>
+          <div ref={panelRef} className={styles.panel} id={`skills-panel-${activeCategory.id}`} role="tabpanel" aria-labelledby={`skills-tab-${activeCategory.id}`}>
             <div key={activeCategory.id} className={`grid h-full min-h-0 gap-4 xl:grid-cols-[minmax(0,0.56fr)_minmax(21rem,0.44fr)] ${styles.panelAnimate}`}>
               <div className="flex min-h-0 flex-col">
                 <div className="pr-2">
