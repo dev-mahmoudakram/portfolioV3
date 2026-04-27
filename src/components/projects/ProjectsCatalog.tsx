@@ -2,6 +2,7 @@ import type { Project } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
+import { RevealSection } from "@/components/RevealSection";
 
 interface ProjectsCatalogProps {
   projects: Project[];
@@ -10,7 +11,7 @@ interface ProjectsCatalogProps {
 export function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
   return (
     <section className="section-shell pb-20 pt-28">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <RevealSection variant="up-sm" className="mb-10 flex flex-wrap items-end justify-between gap-4">
         <div>
           <span className="eyebrow">Projects</span>
           <h1 className="section-title max-w-2xl">All projects</h1>
@@ -19,11 +20,11 @@ export function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
           <Icon name="arrow-left" />
           Back Home
         </Link>
-      </div>
+      </RevealSection>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project) => (
-          <article key={project.id} className="glass-card overflow-hidden">
+        {projects.map((project, i) => (
+          <RevealSection key={project.id} as="article" variant="up" delay={((i % 3) + 1) as 1 | 2 | 3} className="glass-card overflow-hidden">
             <div className="relative aspect-[16/9] overflow-hidden bg-deep/20">
               <Image
                 src={project.image || "/images/project-placeholder.svg"}
@@ -68,7 +69,7 @@ export function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                 ) : null}
               </div>
             </div>
-          </article>
+          </RevealSection>
         ))}
       </div>
     </section>

@@ -26,7 +26,7 @@ export function SkillTabs({ items, activeId, onSelect }: SkillTabsProps) {
             key={item.id}
             type="button"
             role="tab"
-            aria-selected={isActive}
+            aria-selected={isActive ? "true" : "false"}
             aria-controls={`skills-panel-${item.id}`}
             id={`skills-tab-${item.id}`}
             onClick={() => onSelect(item.id)}

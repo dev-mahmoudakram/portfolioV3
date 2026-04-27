@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { sendContactMessage } from "@/services/contact.service";
 import { Icon } from "@/components/Icon";
+import { RevealSection } from "@/components/RevealSection";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -31,7 +32,7 @@ export function ContactSection() {
       <div className="flex flex-1 items-center lg:py-28">
       <div className="grid w-full gap-8 lg:grid-cols-[0.85fr_1.15fr]">
 
-        <div>
+        <RevealSection variant="left">
           <span className="eyebrow">Contact</span>
           <h2 className="section-title">Let&apos;s build something fast, sharp, and memorable.</h2>
           <div className="mt-8 grid gap-3 text-white/72">
@@ -53,8 +54,9 @@ export function ContactSection() {
               </a>
             ))}
           </div>
-        </div>
+        </RevealSection>
 
+        <RevealSection variant="right" delay={1}>
         <form
           onSubmit={handleSubmit}
           className="glass-card grid gap-4 p-6 sm:grid-cols-2"
@@ -82,6 +84,7 @@ export function ContactSection() {
           {status === "success" && <p className="text-sm text-green-300 sm:col-span-2">Message saved successfully.</p>}
           {status === "error"   && <p className="text-sm text-red-300   sm:col-span-2">Something went wrong. Please try again.</p>}
         </form>
+        </RevealSection>
 
       </div>
       </div>

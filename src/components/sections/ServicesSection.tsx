@@ -1,4 +1,5 @@
 import { Icon } from "@/components/Icon";
+import { RevealSection } from "@/components/RevealSection";
 
 const services = [
   ["Landing Pages",     "Launch pages engineered for clarity, trust, and conversion.",   "rocket"],
@@ -11,15 +12,18 @@ const services = [
 export function ServicesSection() {
   return (
     <section id="services" className="snap-section section-shell pb-24 pt-28">
-      <div>
+      <RevealSection variant="up-sm">
         <span className="eyebrow">Services</span>
         <h2 className="section-title max-w-2xl">Web experiences that look premium and work hard.</h2>
-      </div>
+      </RevealSection>
 
       <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        {services.map(([title, text, icon]) => (
-          <article
+        {services.map(([title, text, icon], i) => (
+          <RevealSection
             key={title}
+            as="article"
+            variant="up"
+            delay={(i % 5) + 1}
             className="glass-card p-5 transition-transform duration-200 hover:-translate-y-1.5"
           >
             <span className="inline-flex text-2xl text-soft">
@@ -27,7 +31,7 @@ export function ServicesSection() {
             </span>
             <h3 className="mt-5 font-fredoka text-xl text-white">{title}</h3>
             <p className="mt-3 text-sm leading-6 text-white/62">{text}</p>
-          </article>
+          </RevealSection>
         ))}
       </div>
     </section>

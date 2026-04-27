@@ -320,6 +320,95 @@
   animation: scrollFloat 1.6s ease-in-out infinite;
 }
 
+/* ── Entrance animations ──────────────────────────────────────────────────── */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroDropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-36px) scale(0.97);
+  }
+  70% {
+    transform: translateY(6px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroFadeSlow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* greeting line */
+.heroGreeting {
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+/* h1 */
+.heroTitle {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+/* tagline */
+.heroTagline {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+/* description paragraph */
+.heroDescription {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
+}
+
+/* CTA buttons row */
+.heroCtas {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both;
+}
+
+/* character + glow shell */
+.heroCharacterEntrance {
+  animation: heroDropIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+/* social rail (desktop) */
+.heroSocialEntrance {
+  animation: heroFadeLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both;
+}
+
+/* scroll dock */
+.heroScrollEntrance {
+  animation: heroFadeSlow 0.7s ease 0.9s both;
+}
+
+/* ── Looping animations ───────────────────────────────────────────────────── */
+
 @keyframes waveDrift {
   from {
     transform: scale(1) translateX(0);
@@ -361,8 +450,17 @@
 @media (prefers-reduced-motion: reduce) {
   .waveLayerAnimated,
   .floatY,
-  .scrollButtonFloat {
+  .scrollButtonFloat,
+  .heroGreeting,
+  .heroTitle,
+  .heroTagline,
+  .heroDescription,
+  .heroCtas,
+  .heroCharacterEntrance,
+  .heroSocialEntrance,
+  .heroScrollEntrance {
     animation: none;
+    opacity: 1;
     transform: none;
   }
 }

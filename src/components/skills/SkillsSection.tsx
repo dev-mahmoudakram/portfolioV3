@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { SkillTabs } from "@/components/skills/SkillTabs";
 import { SkillsBackgroundEffects } from "@/components/skills/SkillsBackgroundEffects";
 import { SkillsGrid } from "@/components/skills/SkillsGrid";
+import { RevealSection } from "@/components/RevealSection";
 import styles from "@/styles/skills.module.scss";
 
 type CategoryId = "frontend" | "backend" | "databases" | "cms" | "animation" | "tools";
@@ -140,7 +141,7 @@ export function SkillsSection(_: SkillsSectionProps) {
       <div className={styles.sectionGlowRight} />
 
       <div className="section-shell relative z-[1] grid h-full content-start gap-5 md:content-center xl:grid-cols-[20rem_minmax(0,1fr)] xl:gap-8">
-        <div className={styles.copyColumn}>
+        <RevealSection variant="left" className={styles.copyColumn}>
           <span className={styles.eyebrow}>Skills</span>
           <h2 className="mt-4 font-fredoka text-[2.7rem] font-semibold leading-[0.92] text-white sm:text-[4rem] xl:text-[4.7rem]">
             My<span className={`inline-block ${styles.gradientText}`}>Skills</span>
@@ -159,9 +160,9 @@ export function SkillsSection(_: SkillsSectionProps) {
               />
             </div>
           </div>
-        </div>
+        </RevealSection>
 
-        <div className={styles.panelWrap}>
+        <RevealSection variant="right" delay={1} className={styles.panelWrap}>
           <SkillTabs items={categories} activeId={activeId} onSelect={(id) => setActiveId(id as CategoryId)} />
 
           <div className={`${styles.skillsCharacterWrap} xl:hidden`}>
@@ -179,7 +180,7 @@ export function SkillsSection(_: SkillsSectionProps) {
           </div>
 
           <div className={styles.panel} id={`skills-panel-${activeCategory.id}`} role="tabpanel" aria-labelledby={`skills-tab-${activeCategory.id}`}>
-            <div key={activeCategory.id} className="grid h-full min-h-0 gap-4 xl:grid-cols-[minmax(0,0.56fr)_minmax(21rem,0.44fr)]">
+            <div key={activeCategory.id} className={`grid h-full min-h-0 gap-4 xl:grid-cols-[minmax(0,0.56fr)_minmax(21rem,0.44fr)] ${styles.panelAnimate}`}>
               <div className="flex min-h-0 flex-col">
                 <div className="pr-2">
                   <p className={styles.panelLabel}>{activeCategory.label}</p>
@@ -201,7 +202,7 @@ export function SkillsSection(_: SkillsSectionProps) {
               </div>
             </div>
           </div>
-        </div>
+        </RevealSection>
       </div>
     </section>
   );

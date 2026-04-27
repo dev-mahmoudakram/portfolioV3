@@ -150,7 +150,7 @@ export function Navbar() {
         <button
           type="button"
           aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
+          aria-expanded={menuOpen ? "true" : "false"}
           onClick={() => setMenuOpen((open) => !open)}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/35 text-white backdrop-blur-xl transition-colors hover:border-white/20 lg:hidden"
         >

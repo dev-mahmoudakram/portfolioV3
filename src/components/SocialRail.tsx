@@ -12,7 +12,7 @@ export const socialLinks = [
 
 export function SocialRail() {
   return (
-    <aside className={styles.socialRail} aria-label="Social links">
+    <aside className={`${styles.socialRail} ${styles.heroSocialEntrance}`} aria-label="Social links">
       {socialLinks.map((item) => (
         <a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={item.label} className={styles.socialLink}>
           <Icon name={item.icon} />

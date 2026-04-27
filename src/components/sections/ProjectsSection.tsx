@@ -2,6 +2,7 @@ import type { Project } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
+import { RevealSection } from "@/components/RevealSection";
 
 interface ProjectsSectionProps {
   initialProjects: Project[];
@@ -13,17 +14,17 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
 
   return (
     <section id="projects" className="snap-section section-shell pb-24 pt-28">
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <RevealSection variant="up-sm" className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <span className="eyebrow">Projects</span>
           <h2 className="section-title max-w-2xl">Featured projects and product builds.</h2>
         </div>
-      </div>
+      </RevealSection>
 
       <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
         <div className="grid gap-5 md:grid-cols-2">
-          {visibleProjects.map((project) => (
-            <article key={project.id} className="glass-card p-5">
+          {visibleProjects.map((project, i) => (
+            <RevealSection key={project.id} as="article" variant="up" delay={i + 1} className="glass-card p-5">
               <div className="w-full space-y-5">
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-deep/20">
                   <Image
@@ -53,7 +54,7 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
                   </div>
                 </div>
               </div>
-            </article>
+            </RevealSection>
           ))}
           <div className="pt-1 md:col-span-2">
             <Link href="/projects" className="ghost-button !px-7 !py-3 text-base">
