@@ -8,7 +8,6 @@ const nextConfig = {
   },
   experimental: {
     browsersListForSwc: true,
-    optimizePackageImports: ["simple-icons"],
   },
   images: {
     remotePatterns: [

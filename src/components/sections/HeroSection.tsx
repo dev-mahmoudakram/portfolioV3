@@ -34,7 +34,7 @@ export function HeroSection() {
             </p>
 
             <p className={`${styles.description} ${styles.heroDescription} mt-4 max-w-xl font-poppins text-base leading-7 text-white/64 md:text-lg`}>
-              I build modern, high-performance web experiences using Next.js, NestJS, and clean scalable architecture.
+              I build modern, high-performance web applications using React, Next.js, and scalable full-stack architecture.
             </p>
 
             <HeroCTAs />
@@ -59,7 +59,7 @@ export function HeroSection() {
             <div className={styles.characterShell}>
               <div className={styles.characterGlow} />
               <Image
-                src="/images/char/hi.png"
+                src="/images/char/hi.webp"
                 alt="Mahmoud Akram waving character illustration"
                 width={533}
                 height={600}

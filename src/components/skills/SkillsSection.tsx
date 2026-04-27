@@ -174,7 +174,7 @@ export function SkillsSection(_: SkillsSectionProps) {
             <div className={styles.skillsCharacterGlow} />
             <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
               <Image
-                src="/images/char/skills.png"
+                src="/images/char/skills.webp"
                 alt="Mahmoud Akram character portrait for the skills section"
                 width={370}
                 height={370}
@@ -189,11 +189,11 @@ export function SkillsSection(_: SkillsSectionProps) {
         <RevealSection variant="right" delay={1} className={styles.panelWrap}>
           <SkillTabs items={categories} activeId={activeId} onSelect={handleTabSelect} />
 
-          <div className={`${styles.skillsCharacterWrap} xl:hidden`}>
+          <div className={`${styles.skillsCharacterWrap} hidden sm:block xl:hidden`}>
             <div className={styles.skillsCharacterGlow} />
             <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
               <Image
-                src="/images/char/skills.png"
+                src="/images/char/skills.webp"
                 alt="Mahmoud Akram character portrait for the skills section"
                 width={370}
                 height={370}

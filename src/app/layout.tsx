@@ -62,8 +62,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="preload"
           as="image"
-          href="/_next/image?url=%2Fimages%2Fchar%2Fhi.png&w=828&q=75"
-          imageSrcSet="/_next/image?url=%2Fimages%2Fchar%2Fhi.png&w=384&q=75 384w, /_next/image?url=%2Fimages%2Fchar%2Fhi.png&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fchar%2Fhi.png&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fchar%2Fhi.png&w=1080&q=75 1080w"
+          href="/_next/image?url=%2Fimages%2Fchar%2Fhi.webp&w=828&q=75"
+          imageSrcSet="/_next/image?url=%2Fimages%2Fchar%2Fhi.webp&w=384&q=75 384w, /_next/image?url=%2Fimages%2Fchar%2Fhi.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fchar%2Fhi.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fchar%2Fhi.webp&w=1080&q=75 1080w"
           imageSizes="(max-width: 1023px) 60vw, 533px"
           fetchPriority="high"
         />

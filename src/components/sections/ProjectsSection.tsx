@@ -67,7 +67,7 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
         <div className="hidden lg:flex flex-col items-center justify-center gap-6">
           <div className="relative flex min-h-[420px] w-full items-end overflow-hidden">
             <Image
-              src="/images/char/projects.png"
+              src="/images/char/projects.webp"
               alt="Projects illustration"
               fill
               sizes="22vw"

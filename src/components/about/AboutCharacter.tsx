@@ -12,7 +12,7 @@ export function AboutCharacter() {
         <div className={styles.sparkOne} />
         <div className={styles.sparkTwo} />
         <Image
-          src="/images/char/about.png"
+          src="/images/char/about.webp"
           alt="Mahmoud Akram thinking character illustration"
           width={371}
           height={371}
