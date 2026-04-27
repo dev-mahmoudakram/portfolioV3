@@ -6,9 +6,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  experimental: {
-    browsersListForSwc: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -18,7 +15,7 @@ const nextConfig = {
     ]
   },
   sassOptions: {
-    silenceDeprecations: ["legacy-js-api"]
+    silenceDeprecations: ["legacy-js-api", "import"]
   }
 };
 

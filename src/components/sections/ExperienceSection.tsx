@@ -96,6 +96,7 @@ export function ExperienceSection() {
               height={380}
               sizes="280px"
               className={styles.image}
+              style={{ width: "280px", height: "380px" }}
               priority={false}
             />
           </div>

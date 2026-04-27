@@ -151,8 +151,6 @@
 .image {
   position: relative;
   z-index: 1;
-  width: 100%;
-  height: auto;
   filter: drop-shadow(0 0 28px rgba(87, 46, 220, 0.48)) drop-shadow(0 16px 36px rgba(0, 0, 0, 0.4));
   animation: floatExp 4s ease-in-out infinite;
   will-change: transform;
