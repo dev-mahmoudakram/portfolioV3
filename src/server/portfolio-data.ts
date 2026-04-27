@@ -243,7 +243,7 @@ export async function updateProjectBySlug(slug: string, input: ProjectWriteInput
 
   const nextSlug = await createUniqueSlug(input.title, existing.id);
   const categories = normalizeCategories(input.categories);
-  const primaryCategory = categories[0] ?? existing.category || "uncategorized";
+  const primaryCategory = categories[0] ?? existing.category ?? "uncategorized";
 
   const project = await prisma.project.update({
     where: { id: existing.id },
