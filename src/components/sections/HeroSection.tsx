@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import styles from "@/components/HeroSection.module.scss";
 import { ScrollDownButton } from "@/components/ScrollDownButton";
 import { SocialRail, socialLinks } from "@/components/SocialRail";
 import { HeroScrollHijack } from "@/components/HeroScrollHijack";
-import { scrollToSection } from "@/lib/scrollToSection";
+import { HeroCTAs } from "@/components/HeroCTAs";
 import { Icon } from "@/components/Icon";
 
 export function HeroSection() {
@@ -39,32 +37,7 @@ export function HeroSection() {
               I build modern, high-performance web experiences using Next.js, NestJS, and clean scalable architecture.
             </p>
 
-            <div className={`mt-7 hidden flex-wrap gap-4 sm:flex ${styles.heroCtas}`}>
-              <button
-                type="button"
-                onClick={() => scrollToSection("projects")}
-                className={`inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 font-fredoka text-lg font-medium text-white transition hover:-translate-y-0.5 ${styles.buttonPrimary}`}
-              >
-                View My Work
-                <Icon name="arrow-right" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollToSection("contact")}
-                className={`inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 font-fredoka text-lg font-medium text-white transition hover:-translate-y-0.5 ${styles.buttonSecondary}`}
-              >
-                <Icon name="envelope" />
-                Contact Me
-              </button>
-              <a
-                href="/docs/Mahmoud_Akram_CV.pdf"
-                download
-                className={`inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 font-fredoka text-lg font-medium text-white transition hover:-translate-y-0.5 ${styles.buttonSecondary}`}
-              >
-                <Icon name="download" />
-                Resume
-              </a>
-            </div>
+            <HeroCTAs />
           </div>
 
           <div className={`${styles.visualWrap} ${styles.heroCharacterEntrance}`}>
@@ -83,7 +56,7 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className={`${styles.characterShell} ${styles.floatY}`}>
+            <div className={styles.characterShell}>
               <div className={styles.characterGlow} />
               <Image
                 src="/images/char/hi.png"
@@ -93,7 +66,6 @@ export function HeroSection() {
                 sizes="(max-width: 1023px) 60vw, 533px"
                 priority
                 fetchPriority="high"
-                loading="eager"
                 className={styles.character}
               />
             </div>
