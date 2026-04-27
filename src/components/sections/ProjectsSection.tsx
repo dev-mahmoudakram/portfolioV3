@@ -1,8 +1,6 @@
-"use client";
-
 import type { Project } from "@/types";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import Link from "next/link";
 import { Icon } from "@/components/Icon";
 
 interface ProjectsSectionProps {
@@ -10,78 +8,73 @@ interface ProjectsSectionProps {
 }
 
 export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
-  const [projects] = useState(initialProjects);
-  const categories = useMemo(() => ["all", ...Array.from(new Set(projects.map((p) => p.category)))], [projects]);
-  const [activeCategory, setActiveCategory] = useState("all");
-  const filtered = activeCategory === "all" ? projects : projects.filter((p) => p.category === activeCategory);
+  const featuredProjects = initialProjects.filter((project) => project.featured).slice(0, 4);
+  const visibleProjects = featuredProjects.length > 0 ? featuredProjects : initialProjects.slice(0, 4);
 
   return (
     <section id="projects" className="snap-section section-shell pb-24 pt-28">
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <span className="eyebrow">Projects</span>
-          <h2 className="section-title max-w-2xl">Selected builds with a neon edge.</h2>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              onClick={() => setActiveCategory(category)}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold capitalize transition ${
-                activeCategory === category
-                  ? "border-soft bg-soft text-white"
-                  : "border-white/10 bg-white/5 text-white/65 hover:text-white"
-              }`}
-            >
-              {category.replace("-", " ")}
-            </button>
-          ))}
+          <h2 className="section-title max-w-2xl">Featured projects and product builds.</h2>
         </div>
       </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((project) => (
-          <article
-            key={project.id}
-            className="glass-card group overflow-hidden transition-transform duration-200 hover:-translate-y-2 hover:scale-[1.015]"
-          >
-            <div className="relative aspect-[16/10] overflow-hidden bg-deep/20">
-              <Image
-                src={project.image || "/images/project-placeholder.svg"}
-                alt={`${project.title} preview`}
-                fill
-                sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
-              {project.featured ? (
-                <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">Featured</span>
-              ) : null}
-            </div>
-            <div className="p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-soft">{project.category}</p>
-              <h3 className="mt-3 font-fredoka text-2xl text-white">{project.title}</h3>
-              <p className="mt-3 min-h-[72px] text-sm leading-6 text-white/65">{project.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {project.techStack.map((tech) => (
-                  <span key={tech} className="rounded-full bg-white/[0.07] px-3 py-1 text-xs text-white/68">{tech}</span>
-                ))}
+      <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="grid gap-5 md:grid-cols-2">
+          {visibleProjects.map((project) => (
+            <article key={project.id} className="glass-card p-5">
+              <div className="w-full space-y-5">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-deep/20">
+                  <Image
+                    src={project.image || "/images/project-placeholder.svg"}
+                    alt={`${project.title} preview`}
+                    fill
+                    sizes="(min-width: 1024px) 66vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <div className="flex flex-wrap gap-2">
+                    {(project.categories?.length ? project.categories : [project.category]).map((category) => (
+                      <span key={`${project.id}-${category}`} className="rounded-full border border-white/10 bg-white/[0.05] px-2 py-0.5 text-[11px] uppercase tracking-[0.12em] text-soft">
+                        {category}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="mt-2 font-fredoka text-2xl text-white">{project.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-white/70">{project.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.techStack.map((tech) => (
+                      <span key={tech} className="rounded-full bg-white/[0.07] px-3 py-1 text-xs text-white/68">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="mt-6 flex gap-3">
-                {project.liveUrl ? (
-                  <a href={project.liveUrl} className="ghost-button !px-4 !py-2 text-sm" target="_blank" rel="noreferrer">
-                    <Icon name="external-link" /> Live
-                  </a>
-                ) : null}
-                {project.githubUrl ? (
-                  <a href={project.githubUrl} className="ghost-button !px-4 !py-2 text-sm" target="_blank" rel="noreferrer">
-                    <Icon name="github" /> Code
-                  </a>
-                ) : null}
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+          <div className="pt-1 md:col-span-2">
+            <Link href="/projects" className="ghost-button !px-7 !py-3 text-base">
+              Explore More
+              <Icon name="arrow-right" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-6">
+          <div className="relative flex min-h-[420px] w-full items-end overflow-hidden">
+            <Image
+              src="/images/char/projects.png"
+              alt="Projects illustration"
+              fill
+              sizes="(min-width: 1024px) 33vw, 100vw"
+              className="object-contain object-top"
+              priority
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

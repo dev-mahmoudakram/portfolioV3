@@ -1,10 +1,22 @@
 import "server-only";
-import type { ContactMessage, ContactPayload, Project, Skill } from "@/types";
+import type { Category, ContactMessage, ContactPayload, Project, Skill } from "@/types";
 import { prisma } from "@/lib/prisma";
 
 interface ProjectFilters {
   category?: string;
   tech?: string;
+}
+
+interface ProjectWriteInput {
+  title: string;
+  description: string;
+  longDescription?: string | null;
+  image?: string | null;
+  techStack: string[];
+  categories: string[];
+  liveUrl?: string | null;
+  githubUrl?: string | null;
+  featured?: boolean;
 }
 
 function assertDatabaseUrl() {
@@ -21,6 +33,41 @@ function normalizeTechStack(value: unknown): string[] {
   return value.map((item) => String(item));
 }
 
+function normalizeProjectImage(value: string | null | undefined): string | null {
+  if (!value) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  if (trimmed.startsWith("/")) {
+    return trimmed;
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  return null;
+}
+
+function normalizeCategories(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return Array.from(
+    new Set(
+      value
+        .map((item) => String(item).trim())
+        .filter(Boolean)
+    )
+  );
+}
+
 function serializeProject(project: {
   id: number;
   title: string;
@@ -30,15 +77,22 @@ function serializeProject(project: {
   image: string | null;
   techStack: unknown;
   category: string;
+  categories: string[];
+  sortOrder: number;
   liveUrl: string | null;
   githubUrl: string | null;
   featured: boolean;
   createdAt: Date;
   updatedAt: Date;
 }): Project {
+  const categories = normalizeCategories(project.categories);
+
   return {
     ...project,
+    image: normalizeProjectImage(project.image),
     techStack: normalizeTechStack(project.techStack),
+    categories,
+    category: categories[0] ?? project.category,
     createdAt: project.createdAt.toISOString(),
     updatedAt: project.updatedAt.toISOString()
   };
@@ -55,6 +109,17 @@ function serializeSkill(skill: {
   return {
     ...skill,
     createdAt: skill.createdAt.toISOString()
+  };
+}
+
+function serializeCategory(category: {
+  id: number;
+  name: string;
+  createdAt: Date;
+}): Category {
+  return {
+    ...category,
+    createdAt: category.createdAt.toISOString()
   };
 }
 
@@ -79,8 +144,12 @@ function serializeContactMessage(message: {
 export async function listProjects(filters: ProjectFilters = {}): Promise<Project[]> {
   assertDatabaseUrl();
   const projects = await prisma.project.findMany({
-    where: filters.category ? { category: filters.category } : undefined,
-    orderBy: [{ featured: "desc" }, { createdAt: "desc" }]
+    where: filters.category
+      ? {
+          OR: [{ category: filters.category }, { categories: { has: filters.category } }]
+        }
+      : undefined,
+    orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }]
   });
 
   const normalized = projects.map(serializeProject);
@@ -97,8 +166,8 @@ export async function listFeaturedProjects(): Promise<Project[]> {
   assertDatabaseUrl();
   const projects = await prisma.project.findMany({
     where: { featured: true },
-    orderBy: { createdAt: "desc" },
-    take: 6
+    orderBy: { sortOrder: "asc" },
+    take: 4
   });
 
   return projects.map(serializeProject);
@@ -110,6 +179,134 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
   return project ? serializeProject(project) : null;
 }
 
+function slugifyProjectTitle(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+async function createUniqueSlug(baseTitle: string, currentId?: number) {
+  const baseSlug = slugifyProjectTitle(baseTitle) || `project-${Date.now()}`;
+  let slug = baseSlug;
+  let index = 2;
+
+  while (true) {
+    const existing = await prisma.project.findUnique({ where: { slug }, select: { id: true } });
+    if (!existing || existing.id === currentId) {
+      return slug;
+    }
+    slug = `${baseSlug}-${index}`;
+    index += 1;
+  }
+}
+
+export async function createProject(input: ProjectWriteInput): Promise<Project> {
+  assertDatabaseUrl();
+  const slug = await createUniqueSlug(input.title);
+  const categories = normalizeCategories(input.categories);
+  const primaryCategory = categories[0] ?? "uncategorized";
+  const maxSortOrder = await prisma.project.aggregate({
+    _max: { sortOrder: true }
+  });
+  const nextSortOrder = (maxSortOrder._max.sortOrder ?? -1) + 1;
+
+  const project = await prisma.project.create({
+    data: {
+      slug,
+      title: input.title.trim(),
+      description: input.description.trim(),
+      longDescription: input.longDescription?.trim() || null,
+      image: normalizeProjectImage(input.image),
+      techStack: input.techStack,
+      category: primaryCategory,
+      categories,
+      sortOrder: nextSortOrder,
+      liveUrl: input.liveUrl?.trim() || null,
+      githubUrl: input.githubUrl?.trim() || null,
+      featured: Boolean(input.featured)
+    }
+  });
+
+  return serializeProject(project);
+}
+
+export async function updateProjectBySlug(slug: string, input: ProjectWriteInput): Promise<Project | null> {
+  assertDatabaseUrl();
+  const existing = await prisma.project.findUnique({ where: { slug } });
+  if (!existing) {
+    return null;
+  }
+
+  const nextSlug = await createUniqueSlug(input.title, existing.id);
+  const categories = normalizeCategories(input.categories);
+  const primaryCategory = categories[0] ?? existing.category || "uncategorized";
+
+  const project = await prisma.project.update({
+    where: { id: existing.id },
+    data: {
+      slug: nextSlug,
+      title: input.title.trim(),
+      description: input.description.trim(),
+      longDescription: input.longDescription?.trim() || null,
+      image: normalizeProjectImage(input.image),
+      techStack: input.techStack,
+      category: primaryCategory,
+      categories,
+      liveUrl: input.liveUrl?.trim() || null,
+      githubUrl: input.githubUrl?.trim() || null,
+      featured: Boolean(input.featured)
+    }
+  });
+
+  return serializeProject(project);
+}
+
+export async function deleteProjectBySlug(slug: string): Promise<boolean> {
+  assertDatabaseUrl();
+  const existing = await prisma.project.findUnique({ where: { slug }, select: { id: true } });
+  if (!existing) {
+    return false;
+  }
+
+  await prisma.project.delete({ where: { id: existing.id } });
+  return true;
+}
+
+export async function setFeaturedProjects(projectIds: number[]): Promise<Project[]> {
+  assertDatabaseUrl();
+  await prisma.$transaction([
+    prisma.project.updateMany({ data: { featured: false } }),
+    prisma.project.updateMany({
+      where: {
+        id: {
+          in: projectIds
+        }
+      },
+      data: { featured: true }
+    })
+  ]);
+
+  return listFeaturedProjects();
+}
+
+export async function reorderProjects(projectIds: number[]): Promise<Project[]> {
+  assertDatabaseUrl();
+  await prisma.$transaction(
+    projectIds.map((projectId, index) =>
+      prisma.project.update({
+        where: { id: projectId },
+        data: { sortOrder: index }
+      })
+    )
+  );
+
+  return listProjects();
+}
+
 export async function listSkills(category?: string): Promise<Skill[]> {
   assertDatabaseUrl();
   const skills = await prisma.skill.findMany({
@@ -118,6 +315,93 @@ export async function listSkills(category?: string): Promise<Skill[]> {
   });
 
   return skills.map(serializeSkill);
+}
+
+export async function listCategories(): Promise<Category[]> {
+  assertDatabaseUrl();
+  const categories = await prisma.category.findMany({
+    orderBy: [{ name: "asc" }]
+  });
+
+  return categories.map(serializeCategory);
+}
+
+export async function createCategory(name: string): Promise<Category> {
+  assertDatabaseUrl();
+  const normalized = name.trim();
+  const category = await prisma.category.create({
+    data: { name: normalized }
+  });
+
+  return serializeCategory(category);
+}
+
+export async function updateCategory(id: number, name: string): Promise<Category | null> {
+  assertDatabaseUrl();
+  const normalized = name.trim();
+  const existing = await prisma.category.findUnique({ where: { id } });
+  if (!existing) {
+    return null;
+  }
+
+  const updated = await prisma.$transaction(async (tx) => {
+    const category = await tx.category.update({
+      where: { id },
+      data: { name: normalized }
+    });
+
+    const projects = await tx.project.findMany({
+      where: { categories: { has: existing.name } },
+      select: { id: true, categories: true, category: true }
+    });
+
+    for (const project of projects) {
+      const nextCategories = Array.from(
+        new Set(project.categories.map((item) => (item === existing.name ? normalized : item)))
+      );
+      await tx.project.update({
+        where: { id: project.id },
+        data: {
+          categories: nextCategories,
+          category: nextCategories[0] ?? normalized
+        }
+      });
+    }
+
+    return category;
+  });
+
+  return serializeCategory(updated);
+}
+
+export async function deleteCategory(id: number): Promise<boolean> {
+  assertDatabaseUrl();
+  const existing = await prisma.category.findUnique({ where: { id } });
+  if (!existing) {
+    return false;
+  }
+
+  await prisma.$transaction(async (tx) => {
+    const projects = await tx.project.findMany({
+      where: { categories: { has: existing.name } },
+      select: { id: true, categories: true, category: true }
+    });
+
+    for (const project of projects) {
+      const nextCategories = project.categories.filter((item) => item !== existing.name);
+      await tx.project.update({
+        where: { id: project.id },
+        data: {
+          categories: nextCategories,
+          category: nextCategories[0] ?? "uncategorized"
+        }
+      });
+    }
+
+    await tx.category.delete({ where: { id } });
+  });
+
+  return true;
 }
 
 export function validateContactPayload(payload: ContactPayload) {

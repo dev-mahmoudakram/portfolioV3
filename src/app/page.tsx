@@ -1,17 +1,17 @@
 import type { Project } from "@/types";
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { listProjects } from "@/server/portfolio-data";
 
-const SkillsSection    = dynamic(() => import("@/components/sections/SkillsSection").then(m => m.SkillsSection));
-const ProjectsSection  = dynamic(() => import("@/components/sections/ProjectsSection").then(m => m.ProjectsSection));
-const ContactSection   = dynamic(() => import("@/components/sections/ContactSection").then(m => m.ContactSection));
-const BackToTop        = dynamic(() => import("@/components/BackToTop").then(m => m.BackToTop));
+const SkillsSection    = nextDynamic(() => import("@/components/sections/SkillsSection").then(m => m.SkillsSection));
+const ProjectsSection  = nextDynamic(() => import("@/components/sections/ProjectsSection").then(m => m.ProjectsSection));
+const ContactSection   = nextDynamic(() => import("@/components/sections/ContactSection").then(m => m.ContactSection));
+const BackToTop        = nextDynamic(() => import("@/components/BackToTop").then(m => m.BackToTop));
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 const fallbackProjects: Project[] = [
   {
@@ -22,6 +22,8 @@ const fallbackProjects: Project[] = [
     image: "/images/project-placeholder.svg",
     techStack: ["Next.js", "TypeScript", "Tailwind", "NestJS"],
     category: "dashboard",
+    categories: ["dashboard", "fullstack"],
+    sortOrder: 0,
     liveUrl: "https://example.com",
     githubUrl: "https://github.com",
     featured: true,
@@ -36,6 +38,8 @@ const fallbackProjects: Project[] = [
     image: "/images/project-placeholder.svg",
     techStack: ["Next.js", "GSAP", "SCSS", "Tailwind"],
     category: "landing-page",
+    categories: ["landing-page", "frontend"],
+    sortOrder: 1,
     liveUrl: "https://example.com",
     githubUrl: "https://github.com",
     featured: true,

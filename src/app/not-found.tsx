@@ -15,8 +15,8 @@ export default function NotFound() {
             Back Home
           </Link>
         </div>
-        <div className="glass-card relative mx-auto aspect-[0.86] w-full max-w-sm p-8">
-          <Image src="/images/character-placeholder.svg" alt="404 character placeholder" fill className="object-contain p-8" />
+        <div className="relative mx-auto aspect-square w-full max-w-[460px]">
+          <Image src="/images/char/404.png" alt="404 character illustration" fill className="object-contain" />
         </div>
       </div>
     </main>

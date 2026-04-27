@@ -12,6 +12,7 @@ const projects = [
     image: "/images/project-placeholder.svg",
     techStack: ["Next.js", "TypeScript", "Tailwind", "Prisma", "PostgreSQL"],
     category: "dashboard",
+    categories: ["dashboard", "fullstack"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com",
     featured: true
@@ -25,6 +26,7 @@ const projects = [
     image: "/images/project-placeholder.svg",
     techStack: ["Next.js", "GSAP", "SCSS", "Tailwind"],
     category: "landing-page",
+    categories: ["landing-page", "frontend"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com",
     featured: true
@@ -38,6 +40,7 @@ const projects = [
     image: "/images/project-placeholder.svg",
     techStack: ["Next.js", "App Router", "Prisma", "Supabase", "PostgreSQL"],
     category: "full-stack",
+    categories: ["full-stack", "dashboard"],
     liveUrl: null,
     githubUrl: "https://github.com",
     featured: false
@@ -59,10 +62,11 @@ const skills = [
   ["Blazor Server", "frontend", "fa-solid fa-server", 12],
   ["REST APIs", "backend", "fa-solid fa-network-wired", 1],
   ["Authentication & Authorization", "backend", "fa-solid fa-user-shield", 2],
-  ["Laravel", "backend", "fa-brands fa-laravel", 3],
-  ["Livewire", "backend", "fa-solid fa-bolt", 4],
-  ["MVC Architecture", "backend", "fa-solid fa-sitemap", 5],
-  ["Node.js (Basics)", "backend", "fa-brands fa-node-js", 6],
+  ["PHP", "backend", "fa-brands fa-php", 3],
+  ["Laravel", "backend", "fa-brands fa-laravel", 4],
+  ["Livewire", "backend", "fa-solid fa-bolt", 5],
+  ["MVC Architecture", "backend", "fa-solid fa-sitemap", 6],
+  ["Node.js (Basics)", "backend", "fa-brands fa-node-js", 7],
   ["Prisma ORM", "database", "fa-solid fa-database", 1],
   ["Prisma Migrate", "database", "fa-solid fa-database", 2],
   ["MySQL", "database", "fa-solid fa-database", 3],
@@ -81,6 +85,16 @@ const skills = [
 ];
 
 async function main() {
+  const categoryNames = new Set(projects.flatMap((project) => project.categories));
+
+  for (const name of categoryNames) {
+    await prisma.category.upsert({
+      where: { name },
+      update: {},
+      create: { name }
+    });
+  }
+
   for (const project of projects) {
     await prisma.project.upsert({
       where: { slug: project.slug },

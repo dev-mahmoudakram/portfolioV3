@@ -14,11 +14,19 @@ export interface Project {
   image?: string | null;
   techStack: string[];
   category: ProjectCategory | string;
+  categories: string[];
+  sortOrder: number;
   liveUrl?: string | null;
   githubUrl?: string | null;
   featured: boolean;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  createdAt: string;
 }
 
 export interface Skill {

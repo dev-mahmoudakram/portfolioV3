@@ -61,6 +61,7 @@ const categories: CategoryConfig[] = [
     description: "Structured server-side work with MVC thinking, REST APIs, secure auth flows, and clean integration boundaries.",
     note: "Application flow, access control, and connected system design.",
     skills: [
+      { name: "PHP", icon: "brand:php" },
       { name: "Laravel", icon: "brand:laravel" },
       { name: "Livewire", icon: "brand:livewire" },
       { name: "MVC", title: "MVC Architecture", icon: "sitemap" },

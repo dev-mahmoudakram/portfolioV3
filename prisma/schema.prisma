@@ -17,6 +17,8 @@ model Project {
   image           String?
   techStack       Json
   category        String
+  categories      String[] @default([])
+  sortOrder       Int      @default(0)
   liveUrl         String?
   githubUrl       String?
   featured        Boolean  @default(false)
@@ -25,6 +27,7 @@ model Project {
 
   @@index([category])
   @@index([featured])
+  @@index([sortOrder])
 }
 
 model ContactMessage {
@@ -49,4 +52,10 @@ model Skill {
   createdAt DateTime @default(now())
 
   @@index([category])
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
 }
