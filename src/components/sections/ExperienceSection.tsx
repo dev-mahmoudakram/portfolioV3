@@ -92,11 +92,11 @@ export function ExperienceSection() {
             <Image
               src="/images/char/exp.webp"
               alt="Mahmoud Akram experience illustration"
-              width={280}
+              width={380}
               height={380}
-              sizes="280px"
+              sizes="380px"
               className={styles.image}
-              style={{ width: "280px", height: "380px" }}
+              style={{ width: "380px", height: "380px" }}
               priority={false}
             />
           </div>
