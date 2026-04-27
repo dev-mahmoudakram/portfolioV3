@@ -58,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="preload" as="image" href="/images/char/hi.png" fetchPriority="high" />
       </head>
       <body className={`${fredoka.variable} ${poppins.variable}`}>
         <div className="scroll-container">

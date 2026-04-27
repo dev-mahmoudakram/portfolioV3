@@ -84,6 +84,7 @@ a {
 
 .scroll-container {
   height: 100vh;
+  overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -144,15 +145,16 @@ a {
     &[data-revealed="true"] { opacity: 1; transform: translateY(0); }
   }
 
+  /* Use a smaller translateX so off-screen elements don't cause horizontal overflow */
   [data-reveal="left"] {
     opacity: 0;
-    transform: translateX(-48px);
+    transform: translateX(-32px);
     &[data-revealed="true"] { opacity: 1; transform: translateX(0); }
   }
 
   [data-reveal="right"] {
     opacity: 0;
-    transform: translateX(48px);
+    transform: translateX(32px);
     &[data-revealed="true"] { opacity: 1; transform: translateX(0); }
   }
 

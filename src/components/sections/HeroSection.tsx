@@ -78,7 +78,7 @@ export function HeroSection() {
                   aria-label={item.label}
                   className={styles.socialLink}
                 >
-                  <Icon name={item.icon} />
+                  {item.svg}
                 </a>
               ))}
             </div>

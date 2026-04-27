@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { sendContactMessage } from "@/services/contact.service";
 import { Icon } from "@/components/Icon";
 import { RevealSection } from "@/components/RevealSection";
+import { socialLinks } from "@/components/SocialRail";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -36,23 +37,20 @@ export function ContactSection() {
           <span className="eyebrow">Contact</span>
           <h2 className="section-title">Let&apos;s build something fast, sharp, and memorable.</h2>
           <div className="mt-8 grid gap-3 text-white/72">
-            {[
-              ["github",   "GitHub",   "https://github.com/dev-mahmoudakram"],
-              ["linkedin", "LinkedIn", "https://www.linkedin.com/in/mahmoud-akram-5918a5285"],
-              ["whatsapp", "WhatsApp", "https://wa.me/201204135813"],
-              ["envelope", "Email",    "mailto:vkram101@icloud.com"]
-            ].map(([icon, label, href]) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("mailto") ? undefined : "_blank"}
-                rel={href.startsWith("mailto") ? undefined : "noreferrer"}
-                className="flex items-center gap-3 transition hover:translate-x-1 hover:text-white"
-              >
-                <Icon name={icon} className="text-soft" />
-                {label}
-              </a>
-            ))}
+            {socialLinks
+              .filter((item) => ["GitHub", "LinkedIn", "WhatsApp", "Email"].includes(item.label))
+              .map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={item.href.startsWith("mailto") ? undefined : "noreferrer"}
+                  className="flex items-center gap-3 transition hover:translate-x-1 hover:text-white"
+                >
+                  <span className="text-soft text-[1.1rem]">{item.svg}</span>
+                  {item.label}
+                </a>
+              ))}
           </div>
         </RevealSection>
 

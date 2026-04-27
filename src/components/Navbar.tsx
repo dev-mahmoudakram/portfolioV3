@@ -33,9 +33,11 @@ export function Navbar() {
     const observerRoot = container ?? null;
 
     const setScrollbarWidth = () => {
-      const scrollEl = document.querySelector<HTMLElement>(".scroll-container");
-      const width = scrollEl ? scrollEl.offsetWidth - scrollEl.clientWidth : 0;
-      document.documentElement.style.setProperty("--scrollbar-width", `${width}px`);
+      requestAnimationFrame(() => {
+        const scrollEl = document.querySelector<HTMLElement>(".scroll-container");
+        const width = scrollEl ? scrollEl.offsetWidth - scrollEl.clientWidth : 0;
+        document.documentElement.style.setProperty("--scrollbar-width", `${width}px`);
+      });
     };
 
     const readHeroVisibility = () => {

@@ -64,15 +64,14 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-6">
+        <div className="hidden lg:flex flex-col items-center justify-center gap-6">
           <div className="relative flex min-h-[420px] w-full items-end overflow-hidden">
             <Image
               src="/images/char/projects.png"
               alt="Projects illustration"
               fill
-              sizes="(min-width: 1024px) 22vw, 0px"
+              sizes="22vw"
               className="object-contain object-top"
-              priority
             />
           </div>
         </div>
