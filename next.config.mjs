@@ -5,6 +5,7 @@ const nextConfig = {
   serverExternalPackages: ["@prisma/client", "prisma"],
   experimental: {
     browsersListForSwc: true,
+    optimizePackageImports: ["simple-icons"],
   },
   images: {
     remotePatterns: [

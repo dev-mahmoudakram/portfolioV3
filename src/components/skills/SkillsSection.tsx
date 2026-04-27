@@ -178,6 +178,7 @@ export function SkillsSection(_: SkillsSectionProps) {
                 alt="Mahmoud Akram character portrait for the skills section"
                 width={370}
                 height={370}
+                sizes="370px"
                 className={styles.skillsCharacterImage}
                 priority={false}
               />
@@ -196,6 +197,7 @@ export function SkillsSection(_: SkillsSectionProps) {
                 alt="Mahmoud Akram character portrait for the skills section"
                 width={370}
                 height={370}
+                sizes="(max-width: 639px) 240px, 370px"
                 className={styles.skillsCharacterImage}
                 priority={false}
               />

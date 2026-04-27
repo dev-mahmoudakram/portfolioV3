@@ -47,7 +47,6 @@ export function Navbar() {
     };
 
     setScrollbarWidth();
-    readHeroVisibility();
     window.addEventListener("resize", setScrollbarWidth, { passive: true });
 
     const hero = document.getElementById("home");

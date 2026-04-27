@@ -13,15 +13,14 @@
     "prisma:seed": "node prisma/seed.mjs"
   },
   "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Edge versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions"
+    "Chrome >= 109",
+    "Edge >= 109",
+    "Firefox >= 115",
+    "Safari >= 16.4"
   ],
   "dependencies": {
     "@prisma/client": "^5.13.0",
     "framer-motion": "^12.38.0",
-    "gsap": "^3.12.5",
     "next": "^15.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -101,24 +101,6 @@ a {
   }
 }
 
-.reveal-section {
-  opacity: 0;
-  transform: translateY(36px);
-}
-
-.gsap-hidden {
-  opacity: 0;
-}
-
-.gsap-hidden-up {
-  opacity: 0;
-  transform: translateY(44px);
-}
-
-.gsap-hidden-right {
-  opacity: 0;
-  transform: translateX(56px);
-}
 
 /* ── Scroll-reveal system ─────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
