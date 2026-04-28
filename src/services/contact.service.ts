@@ -1,10 +1,9 @@
-import type { ContactMessage, ContactPayload } from "@/types";
+import type { ContactPayload } from "@/types";
 import { apiFetch } from "@/lib/api";
 
 interface ContactResponse {
   ok: boolean;
   message: string;
-  data: ContactMessage;
 }
 
 export function sendContactMessage(payload: ContactPayload) {

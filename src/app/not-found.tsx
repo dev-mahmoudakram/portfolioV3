@@ -16,7 +16,7 @@ export default function NotFound() {
           </Link>
         </div>
         <div className="relative mx-auto aspect-square w-full max-w-[460px]">
-          <Image src="/images/char/404.png" alt="404 character illustration" fill className="object-contain" />
+          <Image src="/images/char/404.webp" alt="404 character illustration" fill className="object-contain" />
         </div>
       </div>
     </main>

@@ -16,7 +16,7 @@ export function AdminSidebar() {
     <aside className="fixed left-6 top-6 z-30 hidden h-[calc(100vh-3rem)] w-[270px] rounded-[28px] border border-white/10 bg-[#120a2b]/85 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:flex lg:flex-col">
       <Link href="/" className="rounded-2xl border border-white/10 bg-black/25 p-3">
         <Image
-          src="/images/akram%20logo/logo-11.png"
+          src="/images/akram%20logo/logo-11.webp"
           alt="Mahmoud Akram logo"
           width={291}
           height={93}

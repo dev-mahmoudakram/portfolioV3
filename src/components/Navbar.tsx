@@ -125,7 +125,7 @@ export function Navbar() {
             aria-label="Scroll to top"
           >
             <Image
-              src="/images/akram%20logo/logo-11.png"
+              src="/images/akram%20logo/logo-11.webp"
               alt="Mahmoud Akram logo"
               width={291}
               height={93}
@@ -136,7 +136,7 @@ export function Navbar() {
         ) : (
           <Link href="/" className="flex items-center transition hover:opacity-90" aria-label="Go to homepage">
             <Image
-              src="/images/akram%20logo/logo-11.png"
+              src="/images/akram%20logo/logo-11.webp"
               alt="Mahmoud Akram logo"
               width={291}
               height={93}

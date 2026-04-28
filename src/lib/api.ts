@@ -1,7 +1,7 @@
 const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "/api").replace(/\/$/, "");
 
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const timeoutSignal = AbortSignal.timeout(2500);
+  const timeoutSignal = AbortSignal.timeout(30000);
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   const response = await fetch(`${API_URL}${normalizedPath}`, {
     ...init,
@@ -14,7 +14,8 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> 
   });
 
   if (!response.ok) {
-    throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    const body = await response.json().catch(() => ({})) as { message?: string };
+    throw new Error(body.message ?? `Request failed: ${response.status}`);
   }
 
   return response.json() as Promise<T>;

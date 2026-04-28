@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { sendContactMessage } from "@/services/contact.service";
 import { Icon } from "@/components/Icon";
 import { RevealSection } from "@/components/RevealSection";
@@ -8,11 +8,16 @@ import { socialLinks } from "@/components/SocialRail";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [fading, setFading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
-    const form = new FormData(event.currentTarget);
+    setErrorMsg("");
+    const formEl = event.currentTarget;
+    const form = new FormData(formEl);
     try {
       await sendContactMessage({
         name:    String(form.get("name")),
@@ -21,9 +26,14 @@ export function ContactSection() {
         subject: String(form.get("subject") || ""),
         message: String(form.get("message"))
       });
-      event.currentTarget.reset();
-      setStatus("success");
-    } catch {
+      setFading(true);
+      setTimeout(() => {
+        formEl.reset();
+        setStatus("success");
+        setFading(false);
+      }, 400);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStatus("error");
     }
   }
@@ -56,8 +66,9 @@ export function ContactSection() {
 
         <RevealSection variant="right" delay={1}>
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
-          className="glass-card grid gap-4 p-6 sm:grid-cols-2"
+          className={`glass-card grid gap-4 p-6 sm:grid-cols-2 transition-opacity duration-400 ${fading ? "opacity-0" : "opacity-100"}`}
         >
           <input name="name"    required minLength={2} placeholder="Name"    className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
           <input name="email"   required type="email"  placeholder="Email"   className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
@@ -79,8 +90,8 @@ export function ContactSection() {
             <Icon name="send" />
             {status === "loading" ? "Sending..." : "Send Message"}
           </button>
-          {status === "success" && <p className="text-sm text-green-300 sm:col-span-2">Message saved successfully.</p>}
-          {status === "error"   && <p className="text-sm text-red-300   sm:col-span-2">Something went wrong. Please try again.</p>}
+          {status === "success" && <p className="text-sm text-green-300 sm:col-span-2">Message sent successfully!</p>}
+          {status === "error"   && <p className="text-sm text-red-300   sm:col-span-2">{errorMsg || "Something went wrong. Please try again."}</p>}
         </form>
         </RevealSection>
 
