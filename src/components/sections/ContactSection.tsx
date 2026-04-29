@@ -5,11 +5,13 @@ import { sendContactMessage } from "@/services/contact.service";
 import { Icon } from "@/components/Icon";
 import { RevealSection } from "@/components/RevealSection";
 import { socialLinks } from "@/components/SocialRail";
+import { PhoneInput } from "@/components/PhoneInput";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [fading, setFading] = useState(false);
+  const [phone, setPhone] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -22,15 +24,17 @@ export function ContactSection() {
       await sendContactMessage({
         name:    String(form.get("name")),
         email:   String(form.get("email")),
-        phone:   String(form.get("phone")   || ""),
+        phone:   phone,
         subject: String(form.get("subject") || ""),
         message: String(form.get("message"))
       });
       setFading(true);
       setTimeout(() => {
         formEl.reset();
+        setPhone("");
         setStatus("success");
         setFading(false);
+        setTimeout(() => setStatus("idle"), 5000);
       }, 400);
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -72,7 +76,7 @@ export function ContactSection() {
         >
           <input name="name"    required minLength={2} placeholder="Name"    className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
           <input name="email"   required type="email"  placeholder="Email"   className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
-          <input name="phone"                          placeholder="Phone"   className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
+          <PhoneInput value={phone} onChange={setPhone} />
           <input name="subject"                        placeholder="Subject" className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none transition focus:border-soft" />
           <textarea
             name="message"

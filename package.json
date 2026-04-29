@@ -21,6 +21,7 @@
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "@tailwindcss/postcss": "^4.2.4",
+    "intl-tel-input": "^28.0.2",
     "next": "^16.2.4",
     "nodemailer": "^6.10.1",
     "react": "^19.2.5",

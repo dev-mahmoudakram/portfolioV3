@@ -186,3 +186,112 @@ a {
 .admin-tech-scrollbar::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(174, 158, 255, 0.95), rgba(113, 72, 212, 0.95));
 }
+
+/* ── intl-tel-input dark theme ────────────────────────────────────────────── */
+
+/* Wrapper: constrain width and act as the unified input border */
+.iti-dark {
+  width: 100%;
+
+  .iti {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    transition: border-color 0.15s;
+
+    &:focus-within {
+      border-color: #7148D4;
+    }
+  }
+
+  .iti__selected-country {
+    background: transparent;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0 10px 0 14px;
+    gap: 6px;
+
+    &:hover,
+    &[aria-expanded="true"] {
+      background: rgba(113, 72, 212, 0.15);
+      border-radius: 16px 0 0 16px;
+    }
+  }
+
+  .iti__selected-dial-code {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+  }
+
+  .iti__arrow {
+    border-top-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .iti__arrow--up {
+    border-bottom-color: rgba(255, 255, 255, 0.35);
+    border-top-color: transparent;
+  }
+  
+  input[type="tel"] {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    padding-block: 12px !important;
+    width: 100% !important;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+  }
+}
+
+/* Dropdown is appended to body — must be global, not scoped */
+.iti__dropdown-content {
+  background: #0d0720 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7) !important;
+  overflow: hidden;
+}
+
+.iti__search-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+  padding: 8px 12px !important;
+  width: 100% !important;
+  outline: none !important;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+.iti__country {
+  color: rgba(255, 255, 255, 0.8) !important;
+
+  &:hover,
+  &.iti__highlight {
+    background: rgba(113, 72, 212, 0.2) !important;
+    color: #fff !important;
+  }
+}
+
+.iti__country-name {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.iti__dial-code {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.iti__divider {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.iti__search-icon-svg {
+  display: none !important;
+}
