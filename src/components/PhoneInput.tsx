@@ -21,12 +21,13 @@ export function PhoneInput({ value, onChange }: PhoneInputProps) {
     const iti = intlTelInput(inputRef.current, {
       initialCountry: "auto",
       geoIpLookup: () =>
-        fetch("https://ipapi.co/json/")
+        fetch("https://api.country.is/")
           .then((r) => r.json())
-          .then((data: { country_code?: string }) => (data.country_code ?? "us") as Iso2)
+          .then((data: { country?: string }) => (data.country ?? "us") as Iso2)
           .catch(() => "us" as Iso2),
       loadUtils: () => import("intl-tel-input/utils"),
       separateDialCode: true,
+      strictMode: false,
       dropdownContainer: document.body,
     });
 
@@ -57,9 +58,6 @@ export function PhoneInput({ value, onChange }: PhoneInputProps) {
         type="tel"
         placeholder="Phone"
         inputMode="numeric"
-        onChange={(e) => {
-          e.target.value = e.target.value.replace(/\D/g, "");
-        }}
         className="min-w-0 flex-1 pr-4 text-white"
       />
     </div>
