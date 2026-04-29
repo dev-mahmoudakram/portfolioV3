@@ -126,7 +126,7 @@ export async function POST(request: Request) {
     if (errors.length > 0) {
       return NextResponse.json({ ok: false, message: "Validation failed.", errors }, { status: 400 });
     }
-    transporter.sendMail({
+    await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.GMAIL_EMAIL}>`,
       to: process.env.GMAIL_EMAIL,
       replyTo: data.email,
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
           cid: "logo"
         }
       ]
-    }).catch((err) => console.error("Email send failed:", err));
+    });
     return NextResponse.json({ ok: true, message: "Message sent successfully." }, { status: 200 });
   } catch (error) {
     console.error("Contact route error:", error);
