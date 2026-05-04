@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Poppins } from "next/font/google";
 import "@/styles/globals.scss";
-import { Navbar } from "@/components/Navbar";
 
 const fredoka = Fredoka({
   subsets: ["latin"],
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="scroll-container">
           {children}
         </div>
-        <Navbar />
       </body>
     </html>
   );
