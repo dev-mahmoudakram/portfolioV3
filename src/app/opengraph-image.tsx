@@ -8,8 +8,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const logoData = await readFile(path.join(process.cwd(), "public/images/akram logo/logo.png"));
-  const logoBase64 = `data:image/png;base64,${logoData.toString("base64")}`;
+  const logoData = await readFile(path.join(process.cwd(), "public/images/akram logo/logo-11.webp"));
+  const logoBase64 = `data:image/webp;base64,${logoData.toString("base64")}`;
 
   return new ImageResponse(
     (
