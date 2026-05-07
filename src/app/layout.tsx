@@ -42,7 +42,6 @@ export const metadata: Metadata = {
     description: "Built for Speed. Designed to Impress.",
     url: siteUrl,
     siteName: "Mahmoud Akram Portfolio",
-    images: [{ url: "/images/og-placeholder.svg", width: 1200, height: 630, alt: "Mahmoud Akram portfolio preview" }],
     locale: "en_US",
     type: "website"
   },
