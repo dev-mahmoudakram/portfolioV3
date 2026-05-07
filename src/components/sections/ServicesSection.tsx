@@ -24,7 +24,7 @@ export function ServicesSection() {
             as="article"
             variant="up"
             delay={(i % 5) + 1}
-            className="glass-card p-5 transition-transform duration-200 hover:-translate-y-1.5"
+            className="glass-card p-5"
           >
             <span className="inline-flex text-2xl text-soft">
               <Icon name={icon} />
