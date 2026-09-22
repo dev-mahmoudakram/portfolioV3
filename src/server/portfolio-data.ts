@@ -455,7 +455,7 @@ export async function createContactMessage(payload: ContactPayload) {
   return {
     data: {
       ok: true,
-      message: "Thanks Mahmoud will reply soon.",
+      message: "Thanks, Abdelrahman will reply soon.",
       data: serializeContactMessage(message)
     },
     errors: []

@@ -20,13 +20,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "dev-Akram",
+  applicationName: "dev-Yasser",
   title: {
-    default: "Mahmoud Akram | Web Developer",
-    template: "%s | Mahmoud Akram"
+    default: "Abdelrahman Yasser | Software Engineer",
+    template: "%s | Abdelrahman Yasser"
   },
-  description: "Premium portfolio for Mahmoud Akram, a web developer building fast, SEO-friendly, visually polished websites and dashboards.",
-  keywords: ["Mahmoud Akram", "Web Developer", "Next.js", "NestJS", "Portfolio", "SEO", "Frontend Developer"],
+  description: "Portfolio for Abdelrahman Yasser, a software engineer building reliable Ruby on Rails backends and modern React/Next.js frontends.",
+  keywords: ["Abdelrahman Yasser", "Software Engineer", "Ruby on Rails", "React", "Next.js", "Portfolio", "Backend Developer"],
   manifest: "/images/favicon/manifest.json",
   icons: {
     icon: [
@@ -38,11 +38,11 @@ export const metadata: Metadata = {
     shortcut: ["/images/favicon/favicon.ico"]
   },
   openGraph: {
-    title: "Mahmoud Akram | Web Developer",
+    title: "Abdelrahman Yasser | Software Engineer",
     description: "Built for Speed. Designed to Impress.",
     url: siteUrl,
-    siteName: "Mahmoud Akram Portfolio",
-    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Mahmoud Akram portfolio preview" }],
+    siteName: "Abdelrahman Yasser Portfolio",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Abdelrahman Yasser portfolio preview" }],
     locale: "en_US",
     type: "website"
   },

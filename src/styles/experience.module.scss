@@ -138,6 +138,10 @@
 .imageWrap {
   position: relative;
   width: 380px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .imageGlow {
@@ -148,9 +152,21 @@
   filter: blur(36px);
 }
 
-.image {
+.orbGlyph {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 999px;
+  border: 1px solid rgba(190, 160, 255, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: rgba(210, 190, 255, 0.92);
+  font-size: 4rem;
   filter: drop-shadow(0 0 28px rgba(87, 46, 220, 0.48)) drop-shadow(0 16px 36px rgba(0, 0, 0, 0.4));
   animation: floatExp 4s ease-in-out infinite;
   will-change: transform;
@@ -163,5 +179,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .jobCard, .jobCard:hover { transition: none; transform: none; }
-  .image { animation: none; }
+  .orbGlyph { animation: none; }
 }

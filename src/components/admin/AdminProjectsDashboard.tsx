@@ -178,7 +178,7 @@ export function AdminProjectsDashboard({ initialProjects, initialSkills, initial
   const techStackOptions = useMemo(
     () =>
       Array.from(
-        new Set(["PHP", ...initialSkills.map((skill) => skill.name.trim()).filter(Boolean)])
+        new Set(["Ruby on Rails", ...initialSkills.map((skill) => skill.name.trim()).filter(Boolean)])
       ).sort((a, b) => a.localeCompare(b)),
     [initialSkills]
   );

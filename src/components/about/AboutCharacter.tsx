@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Icon } from "@/components/Icon";
 import styles from "@/styles/about.module.scss";
 
 export function AboutCharacter() {
@@ -11,14 +11,9 @@ export function AboutCharacter() {
         <div className={styles.orbitDotSecondary} />
         <div className={styles.sparkOne} />
         <div className={styles.sparkTwo} />
-        <Image
-          src="/images/char/about.webp"
-          alt="Mahmoud Akram thinking character illustration"
-          width={371}
-          height={371}
-          className={styles.characterImage}
-          priority={false}
-        />
+        <div className={styles.orbGlyph} aria-hidden="true">
+          <Icon name="server" />
+        </div>
       </div>
     </div>
   );

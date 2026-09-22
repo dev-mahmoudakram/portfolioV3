@@ -135,7 +135,7 @@
 .characterShell {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   min-height: 32rem;
 }
@@ -150,12 +150,22 @@
   z-index: 0;
 }
 
-.character {
+.orbGlyph {
   position: relative;
   z-index: 2;
-  width: min(100%, 36rem);
-  height: auto;
-  filter: drop-shadow(0 0 28px rgba(87, 46, 220, 0.55)) drop-shadow(0 18px 40px rgba(0, 0, 0, 0.38));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 999px;
+  border: 1px solid rgba(190, 160, 255, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: rgba(210, 190, 255, 0.92);
+  font-size: 4rem;
+  filter: drop-shadow(0 0 28px rgba(87, 46, 220, 0.55));
   animation: floatY 3.4s ease-in-out infinite;
   will-change: transform;
 }

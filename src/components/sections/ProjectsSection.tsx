@@ -65,14 +65,15 @@ export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
         </div>
 
         <div className="hidden lg:flex flex-col items-center justify-center gap-6">
-          <div className="relative flex min-h-[420px] w-full items-end overflow-hidden">
-            <Image
-              src="/images/char/projects.webp"
-              alt="Projects illustration"
-              fill
-              sizes="22vw"
-              className="object-contain object-top"
-            />
+          <div className="relative flex min-h-[420px] w-full items-center justify-center overflow-hidden">
+            <div className="absolute inset-[16%_8%_8%_12%] rounded-full bg-[radial-gradient(circle_at_center,rgba(113,72,212,0.42),rgba(38,7,220,0.18)_46%,transparent_72%)] blur-2xl" aria-hidden="true" />
+            <div
+              className="relative z-10 flex h-48 w-48 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-4xl text-white/85 backdrop-blur-sm"
+              style={{ filter: "drop-shadow(0 0 28px rgba(87, 46, 220, 0.55))" }}
+              aria-hidden="true"
+            >
+              <Icon name="rocket" />
+            </div>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import type { Skill } from "@/types";
 import { useMemo, useRef, useState } from "react";
 import { SkillTabs } from "@/components/skills/SkillTabs";
 import { SkillsBackgroundEffects } from "@/components/skills/SkillsBackgroundEffects";
 import { SkillsGrid } from "@/components/skills/SkillsGrid";
 import { RevealSection } from "@/components/RevealSection";
+import { Icon } from "@/components/Icon";
 import styles from "@/styles/skills.module.scss";
 
 type CategoryId = "frontend" | "backend" | "databases" | "cms" | "animation" | "tools";
@@ -62,11 +62,12 @@ const categories: CategoryConfig[] = [
     description: "Structured server-side work with MVC thinking, REST APIs, secure auth flows, and clean integration boundaries.",
     note: "Application flow, access control, and connected system design.",
     skills: [
-      { name: "PHP", icon: "brand:php" },
-      { name: "Laravel", icon: "brand:laravel" },
-      { name: "Livewire", icon: "brand:livewire" },
-      { name: "MVC", title: "MVC Architecture", icon: "sitemap" },
-      { name: "Node.js", title: "Node.js (Basics)", icon: "brand:nodedotjs" },
+      { name: "Ruby", icon: "code" },
+      { name: "Rails", title: "Ruby on Rails", icon: "sitemap" },
+      { name: "Sidekiq", icon: "bolt" },
+      { name: "ActiveJob", icon: "gauge" },
+      { name: "MVC", title: "MVC Architecture", icon: "branch" },
+      { name: "Docker", icon: "server" },
       { name: "REST APIs", icon: "plug" },
       { name: "Auth & Access", title: "Authentication & Authorization", icon: "shield" }
     ]
@@ -81,20 +82,19 @@ const categories: CategoryConfig[] = [
     skills: [
       { name: "MySQL", icon: "brand:mysql" },
       { name: "PostgreSQL", icon: "brand:postgresql" },
-      { name: "SQL Server", icon: "table" },
-      { name: "Prisma ORM", icon: "brand:prisma" },
+      { name: "ActiveRecord", title: "ActiveRecord ORM", icon: "database" },
     ]
   },
   {
     id: "cms",
-    label: "CMS",
+    label: "Styling",
     icon: "grid",
-    title: "CMS & Platforms",
-    description: "Flexible content-driven builds and storefront-ready implementations with practical customization and publishing workflows.",
-    note: "Content blocks, commerce surfaces, and adaptable delivery.",
+    title: "CSS Preprocessors",
+    description: "Maintainable stylesheets with variables, nesting, and mixins for consistent, scalable UI code.",
+    note: "Structured, reusable styling built for long-term maintenance.",
     skills: [
-      { name: "WordPress", icon: "brand:wordpress" },
-      { name: "Shopify", icon: "brand:shopify" }
+      { name: "SASS", icon: "brand:sass" },
+      { name: "LESS", icon: "grid" }
     ]
   },
   {
@@ -173,15 +173,9 @@ export function SkillsSection(_: SkillsSectionProps) {
           <div className={`${styles.skillsCharacterWrap} hidden xl:block`}>
             <div className={styles.skillsCharacterGlow} />
             <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
-              <Image
-                src="/images/char/skills.webp"
-                alt="Mahmoud Akram character portrait for the skills section"
-                width={370}
-                height={370}
-                sizes="370px"
-                className={styles.skillsCharacterImage}
-                priority={false}
-              />
+              <div className={styles.skillsOrbGlyph} aria-hidden="true">
+                <Icon name="code" />
+              </div>
             </div>
           </div>
         </RevealSection>
@@ -192,15 +186,9 @@ export function SkillsSection(_: SkillsSectionProps) {
           <div className={`${styles.skillsCharacterWrap} hidden sm:block xl:hidden`}>
             <div className={styles.skillsCharacterGlow} />
             <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
-              <Image
-                src="/images/char/skills.webp"
-                alt="Mahmoud Akram character portrait for the skills section"
-                width={370}
-                height={370}
-                sizes="(max-width: 639px) 240px, 370px"
-                className={styles.skillsCharacterImage}
-                priority={false}
-              />
+              <div className={styles.skillsOrbGlyph} aria-hidden="true">
+                <Icon name="code" />
+              </div>
             </div>
           </div>
 

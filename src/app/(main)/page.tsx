@@ -54,7 +54,7 @@ export default async function HomePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Mahmoud Akram",
+    name: "Abdelrahman Yasser",
     jobTitle: "Web Developer",
     url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
     sameAs: ["https://github.com", "https://linkedin.com"]

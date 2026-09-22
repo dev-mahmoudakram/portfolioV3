@@ -52,7 +52,7 @@ function buildEmailHtml(payload: ContactPayload): string {
         <!-- HEADER -->
         <tr>
           <td align="center" bgcolor="#2607DC" style="background-color:#2607DC;background-image:linear-gradient(135deg,#2607DC 0%,#7148D4 100%);border-radius:16px 16px 0 0;padding:32px 32px 28px;">
-            <img src="cid:logo" width="110" alt="Mahmoud Akram" style="display:block;margin:0 auto 16px;width:110px;max-width:110px;height:auto;"/>
+            <img src="cid:logo" width="110" alt="Abdelrahman Yasser" style="display:block;margin:0 auto 16px;width:110px;max-width:110px;height:auto;"/>
             <h1 style="margin:0 0 6px;font-size:22px;font-weight:700;color:#ffffff;font-family:Arial,sans-serif;line-height:1.3;">New Message Received</h1>
             <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.7);font-family:Arial,sans-serif;">${date}</p>
           </td>
@@ -107,7 +107,7 @@ function buildEmailHtml(payload: ContactPayload): string {
         <!-- FOOTER -->
         <tr>
           <td bgcolor="#f0eeff" style="background-color:#f0eeff;border-radius:0 0 16px 16px;padding:16px 28px;text-align:center;">
-            <p style="margin:0;font-size:12px;color:#9985cc;font-family:Arial,sans-serif;">Mahmoud Akram &mdash; Portfolio</p>
+            <p style="margin:0;font-size:12px;color:#9985cc;font-family:Arial,sans-serif;">Abdelrahman Yasser &mdash; Portfolio</p>
           </td>
         </tr>
 

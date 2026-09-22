@@ -15,11 +15,11 @@ export function AboutText() {
 
       <div className="mt-6 space-y-4">
         <p className={styles.bodyText}>
-          I&apos;m <span className={styles.highlight}>Mahmoud Akram</span>, a Full-Stack Developer building modern web apps with <span className={styles.highlight}>React</span>, <span className={styles.highlight}>Next.js</span>, and <span className={styles.highlight}>TypeScript</span> - focused on scalable, high-performance interfaces.
+          I&apos;m <span className={styles.highlight}>Abdelrahman Yasser</span>, a Software Engineer building reliable web applications and backend systems with <span className={styles.highlight}>Ruby on Rails</span> - focused on clean, scalable, and maintainable solutions.
         </p>
 
         <p className={styles.bodyText}>
-          On the back end I work with <span className={styles.highlight}>Laravel</span>, <span className={styles.highlight}>Prisma</span>, <span className={styles.highlight}>REST APIs</span>, and databases like <span className={styles.highlight}>MySQL</span> &amp; <span className={styles.highlight}>PostgreSQL</span>, delivering complete, SEO-ready systems with clean, maintainable code.
+          I work with <span className={styles.highlight}>REST APIs</span>, <span className={styles.highlight}>Sidekiq</span> &amp; <span className={styles.highlight}>ActiveJob</span> background processing, and databases like <span className={styles.highlight}>PostgreSQL</span> &amp; <span className={styles.highlight}>MySQL</span> via ActiveRecord, and pair them with <span className={styles.highlight}>React</span> and <span className={styles.highlight}>Next.js</span> on the front end to deliver complete, production-ready systems.
         </p>
       </div>
     </div>

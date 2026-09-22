@@ -1,40 +1,38 @@
-import Image from "next/image";
 import { RevealSection } from "@/components/RevealSection";
+import { Icon } from "@/components/Icon";
 import styles from "@/styles/experience.module.scss";
 
 const jobs = [
   {
+    company: "NHC Innovation",
+    role: "Software Engineer (Ruby on Rails)",
+    period: "Oct 2025 – Present",
+    bullets: [
+      "Contributing to the Ejar app project for the Real Estate General Authority in KSA.",
+      "Enhancing application performance and resolving critical bugs.",
+      "Optimizing APIs and providing support to ensure a smooth user experience.",
+      "Deepening expertise in Ruby on Rails, AWS, and modular software solutions.",
+    ],
+  },
+  {
+    company: "Damlag S.A.E",
+    role: "Software Engineer (Ruby on Rails)",
+    period: "Oct 2023 – Oct 2025",
+    bullets: [
+      "Developed and maintained elcinema.com, working with large-scale databases including an online booking system.",
+      "Contributed to an internal cinematic booking system, ensuring accurate and efficient handling of financial transactions.",
+      "Conducted hotfixes in production, especially during peak seasons for ticketing.",
+      "Participated in code review processes to maintain high code quality and promote best practices among team members.",
+    ],
+  },
+  {
     company: "Meem Digital Transformation",
-    role: "Full-Stack Developer",
-    period: "Jan 2024 – Present",
+    role: "Front-end Developer",
+    period: "Mar 2023 – Jan 2024",
     bullets: [
-      "Developed web interfaces using Laravel Blade templates for front-end rendering.",
-      "Collaborated with back-end teams to integrate REST APIs and dynamic data.",
-      "Focused on performance optimization and clean, maintainable code.",
-      "Worked on real-world business systems with emphasis on user experience and scalability.",
-    ],
-  },
-  {
-    company: "North Studios",
-    role: "Full-Stack & WordPress Developer",
-    badge: "Part-time",
-    period: "May 2024 – Aug 2025",
-    bullets: [
-      "Developed full-stack web solutions using PHP, Laravel-style MVC patterns, and MySQL.",
-      "Built, customized, and maintained WordPress websites including custom themes and plugins.",
-      "Implemented REST API integrations and dynamic features across front-end and back-end.",
-      "Worked on both client-facing UIs and server-side logic, ensuring performance and security.",
-      "Collaborated with designers and stakeholders to deliver scalable, SEO-friendly solutions.",
-    ],
-  },
-  {
-    company: "Tarek Nour Communications",
-    role: "Web Developer Intern",
-    period: "Sep 2023 – Nov 2023",
-    bullets: [
-      "Completed a 2-month training program focused on web development fundamentals.",
-      "Assisted in building and updating web pages using HTML, CSS, and JavaScript.",
-      "Gained hands-on experience working in a professional agency environment.",
+      "Worked closely with UX/UI designers and back-end developers to ensure cohesive integration of front-end elements with server-side logic and APIs.",
+      "Developed mobile-first designs that adapt seamlessly across various devices and screen sizes.",
+      "Implemented interactive features using JavaScript to improve user engagement, including form validation and dynamic content updates.",
     ],
   },
 ];
@@ -61,7 +59,6 @@ export function ExperienceSection() {
                     <h3 className="font-fredoka text-[1.15rem] font-semibold leading-tight text-white">
                       {job.company}
                     </h3>
-                    {job.badge && <span className={styles.badge}>{job.badge}</span>}
                   </div>
                   <div className="mt-0.5 flex flex-wrap items-center gap-3">
                     <span className={styles.role}>{job.role}</span>
@@ -85,20 +82,13 @@ export function ExperienceSection() {
           ))}
         </div>
 
-        {/* Character — desktop only, vertically centered */}
+        {/* Decorative glow — desktop only, vertically centered */}
         <RevealSection variant="right" className={styles.imageCol}>
           <div className={styles.imageWrap}>
             <div className={styles.imageGlow} />
-            <Image
-              src="/images/char/exp.webp"
-              alt="Mahmoud Akram experience illustration"
-              width={380}
-              height={380}
-              sizes="380px"
-              className={styles.image}
-              style={{ width: "380px", height: "380px" }}
-              priority={false}
-            />
+            <div className={styles.orbGlyph} aria-hidden="true">
+              <Icon name="branch" />
+            </div>
           </div>
         </RevealSection>
 

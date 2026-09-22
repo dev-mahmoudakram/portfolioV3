@@ -126,7 +126,7 @@ export function Navbar() {
           >
             <Image
               src="/images/akram%20logo/logo-11.webp"
-              alt="Mahmoud Akram logo"
+              alt="Abdelrahman Yasser logo"
               width={291}
               height={93}
               priority
@@ -137,7 +137,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center transition hover:opacity-90" aria-label="Go to homepage">
             <Image
               src="/images/akram%20logo/logo-11.webp"
-              alt="Mahmoud Akram logo"
+              alt="Abdelrahman Yasser logo"
               width={291}
               height={93}
               priority

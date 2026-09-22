@@ -8,7 +8,7 @@ const cards = [
   },
   {
     title: "Backend Development",
-    description: "Laravel, Prisma, REST APIs",
+    description: "Ruby on Rails, REST APIs, Sidekiq",
     icon: "server"
   },
   {

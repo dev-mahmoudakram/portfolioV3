@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
 
@@ -15,8 +14,15 @@ export default function NotFound() {
             Back Home
           </Link>
         </div>
-        <div className="relative mx-auto aspect-square w-full max-w-[460px]">
-          <Image src="/images/char/404.webp" alt="404 character illustration" fill className="object-contain" />
+        <div className="relative mx-auto flex aspect-square w-full max-w-[460px] items-center justify-center">
+          <div className="absolute inset-[14%] rounded-full bg-[radial-gradient(circle_at_center,rgba(113,72,212,0.42),rgba(38,7,220,0.18)_46%,transparent_72%)] blur-2xl" aria-hidden="true" />
+          <div
+            className="relative z-10 flex h-52 w-52 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-5xl text-white/85 backdrop-blur-sm"
+            style={{ filter: "drop-shadow(0 0 28px rgba(87, 46, 220, 0.55))" }}
+            aria-hidden="true"
+          >
+            <Icon name="search" />
+          </div>
         </div>
       </div>
     </main>

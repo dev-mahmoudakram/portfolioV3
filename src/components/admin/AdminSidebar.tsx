@@ -17,7 +17,7 @@ export function AdminSidebar() {
       <Link href="/" className="rounded-2xl border border-white/10 bg-black/25 p-3">
         <Image
           src="/images/akram%20logo/logo-11.webp"
-          alt="Mahmoud Akram logo"
+          alt="Abdelrahman Yasser logo"
           width={291}
           height={93}
           className="h-auto w-[185px] object-contain"
