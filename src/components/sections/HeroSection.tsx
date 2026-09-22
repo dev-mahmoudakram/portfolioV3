@@ -1,9 +1,9 @@
+import Image from "next/image";
 import styles from "@/components/HeroSection.module.scss";
 import { ScrollDownButton } from "@/components/ScrollDownButton";
 import { SocialRail, socialLinks } from "@/components/SocialRail";
 import { HeroScrollHijack } from "@/components/HeroScrollHijack";
 import { HeroCTAs } from "@/components/HeroCTAs";
-import { Icon } from "@/components/Icon";
 
 export function HeroSection() {
   return (
@@ -57,9 +57,15 @@ export function HeroSection() {
 
             <div className={styles.characterShell}>
               <div className={styles.characterGlow} />
-              <div className={styles.orbGlyph} aria-hidden="true">
-                <Icon name="code" />
-              </div>
+              <Image
+                src="/images/char/rails-hi.png"
+                alt="Abdelrahman Yasser waving character illustration"
+                width={1200}
+                height={1400}
+                sizes="(max-width: 1023px) 78vw, 560px"
+                priority
+                className={styles.character}
+              />
             </div>
             <div className="mt-4 flex justify-center sm:hidden">
               <ScrollDownButton targetId="about" mobile />

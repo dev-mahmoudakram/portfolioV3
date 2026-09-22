@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title">
+  <title id="title">Abdelrahman Yasser</title>
+  <defs>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d8c2ff"/>
+      <stop offset=".52" stop-color="#a66fff"/>
+      <stop offset="1" stop-color="#6b34f1"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g fill="none" stroke="url(#accent)" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" filter="url(#glow)">
+    <path d="M38 50 76 90 38 130"/>
+    <path d="m112 50-38 40 38 40"/>
+    <path d="m130 142 30-104"/>
+  </g>
+  <text x="190" y="82" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" letter-spacing="1">ABDELRAHMAN</text>
+  <text x="194" y="132" fill="url(#accent)" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" letter-spacing="12">YASSER</text>
+</svg>

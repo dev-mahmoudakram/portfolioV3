@@ -1,5 +1,5 @@
 import { RevealSection } from "@/components/RevealSection";
-import { Icon } from "@/components/Icon";
+import Image from "next/image";
 import styles from "@/styles/experience.module.scss";
 
 const jobs = [
@@ -86,9 +86,13 @@ export function ExperienceSection() {
         <RevealSection variant="right" className={styles.imageCol}>
           <div className={styles.imageWrap}>
             <div className={styles.imageGlow} />
-            <div className={styles.orbGlyph} aria-hidden="true">
-              <Icon name="branch" />
-            </div>
+            <Image
+              src="/images/char/rails-exp.png"
+              alt="Abdelrahman Yasser working at a laptop"
+              width={1280}
+              height={1280}
+              className={styles.characterImage}
+            />
           </div>
         </RevealSection>
 

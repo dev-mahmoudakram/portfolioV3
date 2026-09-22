@@ -1,12 +1,12 @@
 "use client";
 
 import type { Skill } from "@/types";
+import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 import { SkillTabs } from "@/components/skills/SkillTabs";
 import { SkillsBackgroundEffects } from "@/components/skills/SkillsBackgroundEffects";
 import { SkillsGrid } from "@/components/skills/SkillsGrid";
 import { RevealSection } from "@/components/RevealSection";
-import { Icon } from "@/components/Icon";
 import styles from "@/styles/skills.module.scss";
 
 type CategoryId = "frontend" | "backend" | "databases" | "cms" | "animation" | "tools";
@@ -173,9 +173,7 @@ export function SkillsSection(_: SkillsSectionProps) {
           <div className={`${styles.skillsCharacterWrap} hidden xl:block`}>
             <div className={styles.skillsCharacterGlow} />
             <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
-              <div className={styles.skillsOrbGlyph} aria-hidden="true">
-                <Icon name="code" />
-              </div>
+              <Image src="/images/char/rails-skills.png" alt="Abdelrahman Yasser pointing toward his skills" width={1200} height={1400} className={styles.skillsCharacterImage} />
             </div>
           </div>
         </RevealSection>
@@ -186,9 +184,7 @@ export function SkillsSection(_: SkillsSectionProps) {
           <div className={`${styles.skillsCharacterWrap} hidden sm:block xl:hidden`}>
             <div className={styles.skillsCharacterGlow} />
             <div className={`${styles.skillsCharacter} ${styles.floatPrimary}`}>
-              <div className={styles.skillsOrbGlyph} aria-hidden="true">
-                <Icon name="code" />
-              </div>
+              <Image src="/images/char/rails-skills.png" alt="Abdelrahman Yasser pointing toward his skills" width={1200} height={1400} className={styles.skillsCharacterImage} />
             </div>
           </div>
 

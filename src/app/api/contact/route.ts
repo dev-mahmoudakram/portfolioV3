@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const LOGO_PATH = path.join(process.cwd(), "public/images/akram logo/logo-11.png");
+const LOGO_PATH = path.join(process.cwd(), "public/images/abdelrahman-yasser-logo.svg");
 
 function row(label: string, value: string, isLink = false): string {
   return `<tr>
@@ -135,7 +135,7 @@ export async function POST(request: Request) {
       html: buildEmailHtml(data),
       attachments: [
         {
-          filename: "logo.png",
+          filename: "logo.svg",
           path: LOGO_PATH,
           cid: "logo"
         }

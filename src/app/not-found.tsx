@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@/components/Icon";
 
 export default function NotFound() {
@@ -16,13 +17,14 @@ export default function NotFound() {
         </div>
         <div className="relative mx-auto flex aspect-square w-full max-w-[460px] items-center justify-center">
           <div className="absolute inset-[14%] rounded-full bg-[radial-gradient(circle_at_center,rgba(113,72,212,0.42),rgba(38,7,220,0.18)_46%,transparent_72%)] blur-2xl" aria-hidden="true" />
-          <div
-            className="relative z-10 flex h-52 w-52 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-5xl text-white/85 backdrop-blur-sm"
-            style={{ filter: "drop-shadow(0 0 28px rgba(87, 46, 220, 0.55))" }}
-            aria-hidden="true"
-          >
-            <Icon name="search" />
-          </div>
+          <Image
+            src="/images/char/rails-404.png"
+            alt="Abdelrahman Yasser with a puzzled expression"
+            width={1200}
+            height={1400}
+            sizes="(max-width: 1023px) 78vw, 460px"
+            className="relative z-10 h-auto w-full max-w-[460px] drop-shadow-[0_16px_36px_rgba(0,0,0,0.4)]"
+          />
         </div>
       </div>
     </main>

@@ -152,6 +152,15 @@
   filter: blur(36px);
 }
 
+.characterImage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.4));
+  animation: floatExp 4s ease-in-out infinite;
+}
+
 .orbGlyph {
   position: relative;
   z-index: 1;

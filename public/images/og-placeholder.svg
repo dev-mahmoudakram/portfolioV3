@@ -3,7 +3,7 @@
   <circle cx="968" cy="82" r="260" fill="#2607DC" fill-opacity=".28"/>
   <circle cx="176" cy="544" r="260" fill="#7148D4" fill-opacity=".24"/>
   <path d="M68 432C258 286 441 228 618 260C805 294 912 428 1132 302" stroke="url(#wave)" stroke-width="18" stroke-linecap="round" opacity=".82"/>
-  <text x="86" y="228" fill="white" font-family="Arial, sans-serif" font-size="76" font-weight="800">Mahmoud Akram</text>
+  <text x="86" y="228" fill="white" font-family="Arial, sans-serif" font-size="76" font-weight="800">Abdelrahman Yasser</text>
   <text x="92" y="312" fill="#C9B8FF" font-family="Arial, sans-serif" font-size="42" font-weight="700">Web Developer</text>
   <text x="92" y="372" fill="white" fill-opacity=".72" font-family="Arial, sans-serif" font-size="30">Built for Speed. Designed to Impress.</text>
   <defs>

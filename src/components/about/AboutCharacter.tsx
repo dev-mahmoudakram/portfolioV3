@@ -1,4 +1,4 @@
-import { Icon } from "@/components/Icon";
+import Image from "next/image";
 import styles from "@/styles/about.module.scss";
 
 export function AboutCharacter() {
@@ -11,9 +11,13 @@ export function AboutCharacter() {
         <div className={styles.orbitDotSecondary} />
         <div className={styles.sparkOne} />
         <div className={styles.sparkTwo} />
-        <div className={styles.orbGlyph} aria-hidden="true">
-          <Icon name="server" />
-        </div>
+        <Image
+          src="/images/char/rails-about.png"
+          alt="Abdelrahman Yasser character illustration"
+          width={1280}
+          height={1280}
+          className={styles.characterImage}
+        />
       </div>
     </div>
   );

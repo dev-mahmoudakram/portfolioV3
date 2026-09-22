@@ -125,10 +125,10 @@ export function Navbar() {
             aria-label="Scroll to top"
           >
             <Image
-              src="/images/akram%20logo/logo-11.webp"
+              src="/images/abdelrahman-yasser-logo.svg"
               alt="Abdelrahman Yasser logo"
-              width={291}
-              height={93}
+              width={720}
+              height={180}
               priority
               className="h-auto w-[170px] object-contain sm:w-[210px]"
             />
@@ -136,10 +136,10 @@ export function Navbar() {
         ) : (
           <Link href="/" className="flex items-center transition hover:opacity-90" aria-label="Go to homepage">
             <Image
-              src="/images/akram%20logo/logo-11.webp"
+              src="/images/abdelrahman-yasser-logo.svg"
               alt="Abdelrahman Yasser logo"
-              width={291}
-              height={93}
+              width={720}
+              height={180}
               priority
               className="h-auto w-[170px] object-contain sm:w-[210px]"
             />
