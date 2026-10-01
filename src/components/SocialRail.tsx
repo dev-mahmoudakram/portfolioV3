@@ -30,7 +30,7 @@ export const socialLinks: SocialItem[] = [
   { href: "https://www.instagram.com/akram.__.__/",                    label: "Instagram", svg: <BrandIcon path={instagramPath} /> },
   { href: "https://www.facebook.com/mahmoud.akram.31542",              label: "Facebook",  svg: <BrandIcon path={facebookPath} /> },
   { href: "https://wa.me/201204135813",                                label: "WhatsApp",  svg: <BrandIcon path={whatsappPath} /> },
-  { href: "mailto:vkram101@icloud.com",                                label: "Email",
+  { href: "mailto:info@mahmoudakram.tech",                             label: "Email",
     svg: (
       <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4 6h16v12H4z" />

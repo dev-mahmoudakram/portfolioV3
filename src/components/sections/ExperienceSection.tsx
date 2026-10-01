@@ -4,9 +4,20 @@ import styles from "@/styles/experience.module.scss";
 
 const jobs = [
   {
+    company: "Izam Inc",
+    role: "Software Engineer",
+    period: "Jul 2026 – Present",
+    bullets: [
+      "Building cloud-based SaaS products for SMEs, used by 3M+ active users across 35+ countries.",
+      "Contributing to Izam's business management ecosystem, including Daftra, Enerpize, and Online Invoices.",
+      "Developing features for ERP, accounting, and invoicing workflows tailored to 50+ industries.",
+      "Collaborating with cross-functional teams to ship reliable, scalable solutions for the MENA market.",
+    ],
+  },
+  {
     company: "Meem Digital Transformation",
     role: "Full-Stack Developer",
-    period: "Jan 2024 – Present",
+    period: "Jan 2024 – Jun 2026",
     bullets: [
       "Developed web interfaces using Laravel Blade templates for front-end rendering.",
       "Collaborated with back-end teams to integrate REST APIs and dynamic data.",
